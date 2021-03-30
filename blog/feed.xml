@@ -5,8 +5,8 @@
     <description>graphscope blog</description>
     <link>https://graphscope.io/blog/</link>
     <atom:link href="https://graphscope.io/blog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 26 Mar 2021 07:52:19 +0000</pubDate>
-    <lastBuildDate>Fri, 26 Mar 2021 07:52:19 +0000</lastBuildDate>
+    <pubDate>Tue, 30 Mar 2021 08:17:57 +0000</pubDate>
+    <lastBuildDate>Tue, 30 Mar 2021 08:17:57 +0000</lastBuildDate>
     <generator>Jekyll v4.2.0</generator>
     
       <item>
@@ -22,9 +22,13 @@ To explore underlying insights hidden in graph data, many graph analytics algori
 
 &lt;p&gt;&lt;img src=&quot;/blog/assets/images/vertex-messaging.png&quot; alt=&quot;vertex-model&quot; /&gt;&lt;/p&gt;
 
+&lt;p&gt;With the vertex-centric model, the vertex program of single source shortest paths (SSSP) is expressed as follows.&lt;/p&gt;
+
 &lt;p&gt;However, the performance of Pregel drops dramatically when facing natural graphs which follow a power-law distribution. To solve this problem, PowerGraph[2] proposed the GAS (Gather-Apply-Scatter) programming model for the vertex-cut graph partitioning strategy. The Gather function runs locally on each partition and then one accumulator is sent from each mirror to the master. The master runs the Apply function and then sends the updated vertex data to all mirrors. Finally, the Scatter phase is run in parallel on mirrors to update the data on adjacent edges.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/blog/assets/images/gas.png&quot; alt=&quot;gas-model&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Following the GAS abstraction, the SSSP can be implemented as follows:&lt;/p&gt;
 
 &lt;h5 id=&quot;pros&quot;&gt;Pros:&lt;/h5&gt;
 &lt;ul&gt;
@@ -41,6 +45,8 @@ To explore underlying insights hidden in graph data, many graph analytics algori
 &lt;h4 id=&quot;think-like-a-graph&quot;&gt;Think like a graph&lt;/h4&gt;
 
 &lt;p&gt;To tackle the problem of short-sighted vertices in the vertex-centric model, the subgraph-centric (a.k.a. block-centric, partition-centric) programming model[3, 4] is proposed. Different from the vertex-centric model, the subgraph-centric model focuses on the entire subgraph, and is labeled as “think like a graph”. For the vertex-centric model, it uses the information of 1-hop neighbors to update the value of each vertex in one superstep. Instead, the subgraph-centric model leverages information within the whole subgraph. In addition, each vertex can send messages to any vertex in the graph, instead of 1-hop neighbors. In this way, the communication overhead and the number of supersteps are greatly reduced.&lt;/p&gt;
+
+&lt;p&gt;The SSSP is expressed as follows in the subgraph-centric model.&lt;/p&gt;
 
 &lt;h5 id=&quot;pros-1&quot;&gt;Pros:&lt;/h5&gt;
 &lt;ul&gt;
@@ -66,6 +72,8 @@ To explore underlying insights hidden in graph data, many graph analytics algori
 &lt;p&gt;The PIE model works on a graph G and each worker maintains a partition of G. Given a query, each worker first executes PEval against its local partition, to compute partial answers in parallel. Then each worker may exchange partial results with other workers via synchronous message passing. Upon receiving messages, each worker incrementally computes IncEval. The incremental step iterates until no further messages can be generated. At this point, Assemble pulls partial answers and assembles the final result. In this way, the PIE model parallelizes existing sequential graph algorithms, without revising their logic and workflow.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/blog/assets/images/gs-workflow.png&quot; alt=&quot;vertex-model&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The following pseudo-code shows how SSSP is expressed in the PIE model, where the Dijkstra’s algorithm is directly used for the computation of parallel SSSP.&lt;/p&gt;
 
 &lt;p&gt;Currently, the PIE model has been developed and evaluated in the graph analytical engine of GraphScope. On the LDBC Graph Analytics benchmark, GraphScope outperforms other state-of-the-art graph processing systems (see link). Welcome to try and develop your own graph algorithms with GraphScope.&lt;/p&gt;
 
