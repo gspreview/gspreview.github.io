@@ -92,7 +92,7 @@ To explore underlying insights hidden in graph data, many graph analytics algori
 <p>Following the GAS abstraction, the SSSP can be implemented as follows.</p>
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">GASForSSSP</span><span class="p">():</span>
     <span class="c1"># gather_nbrs: ALL_NBRS
-</span>    <span class="n">function</span> <span class="n">gather</span><span class="p">(</span><span class="n">D_u</span><span class="p">,</span> <span class="n">D</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">),</span> <span class="n">D_v</span><span class="p">):</span>
+</span>    <span class="k">def</span> <span class="nf">gather</span><span class="p">(</span><span class="n">D_u</span><span class="p">,</span> <span class="n">D</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">),</span> <span class="n">D_v</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">D_v</span> <span class="o">+</span> <span class="n">D</span><span class="p">(</span><span class="n">v</span><span class="p">,</span><span class="n">u</span><span class="p">)</span>
     
     <span class="k">def</span> <span class="nf">sum</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span> 
