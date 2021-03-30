@@ -70,8 +70,7 @@ To explore underlying insights hidden in graph data, many graph analytics algori
 <p><img src="/blog/assets/images/vertex-messaging.png" alt="vertex-model" /></p>
 
 <p>With the vertex-centric model, the vertex program of single source shortest paths (SSSP) is expressed as follows.</p>
-
-<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">function</span> <span class="n">VertexProgramForSSSP</span><span class="p">:</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">VertexProgramForSSSP</span><span class="p">():</span>
     <span class="c1"># receive and merge incoming messages
 </span>    <span class="n">incoming_msgs</span> <span class="o">&lt;-</span> <span class="n">ReceiveMessages</span><span class="p">()</span>
     <span class="n">merged_msg</span> <span class="o">&lt;-</span> <span class="n">Reduce</span><span class="p">(</span><span class="n">incoming_msgs</span><span class="p">,</span> <span class="n">MIN</span><span class="p">)</span>
@@ -84,34 +83,34 @@ To explore underlying insights hidden in graph data, many graph analytics algori
 </span>    <span class="k">for</span> <span class="n">each</span> <span class="n">neighbor</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">dist</span> <span class="o">+</span> <span class="n">edge_weight</span> <span class="o">&lt;</span> <span class="n">neighbor_dist</span><span class="p">:</span>
             <span class="n">SendMessage</span><span class="p">(</span><span class="n">neighbor</span><span class="p">,</span> <span class="n">dist</span> <span class="o">+</span> <span class="n">edge_weight</span><span class="p">)</span>
- </code></pre></figure>
+</code></pre></div></div>
 
 <p>However, the performance of Pregel drops dramatically when facing natural graphs which follow a power-law distribution. To solve this problem, PowerGraph[2] proposed the GAS (Gather-Apply-Scatter) programming model for the vertex-cut graph partitioning strategy. The Gather function runs locally on each partition and then one accumulator is sent from each mirror to the master. The master runs the Apply function and then sends the updated vertex data to all mirrors. Finally, the Scatter phase is run in parallel on mirrors to update the data on adjacent edges.</p>
 
 <p><img src="/blog/assets/images/gas.png" alt="gas-model" /></p>
 
 <p>Following the GAS abstraction, the SSSP can be implemented as follows.</p>
-
-<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">function</span> <span class="n">GASForSSSP</span><span class="p">:</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">GASForSSSP</span><span class="p">():</span>
     <span class="c1"># gather_nbrs: ALL_NBRS
 </span>    <span class="n">function</span> <span class="n">gather</span><span class="p">(</span><span class="n">D_u</span><span class="p">,</span> <span class="n">D</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">),</span> <span class="n">D_v</span><span class="p">):</span>
-    	<span class="k">return</span> <span class="n">D_v</span> <span class="o">+</span> <span class="n">D</span><span class="p">(</span><span class="n">v</span><span class="p">,</span><span class="n">u</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">D_v</span> <span class="o">+</span> <span class="n">D</span><span class="p">(</span><span class="n">v</span><span class="p">,</span><span class="n">u</span><span class="p">)</span>
     
-    <span class="n">function</span> <span class="nb">sum</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span> 
+    <span class="k">def</span> <span class="nf">sum</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span> 
         <span class="k">return</span> <span class="nb">min</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
     
-    <span class="n">function</span> <span class="nb">apply</span><span class="p">(</span><span class="n">D_u</span><span class="p">,</span> <span class="n">new_dist</span><span class="p">):</span>
-	<span class="n">D_u</span> <span class="o">=</span> <span class="n">new_dist</span>
+    <span class="k">def</span> <span class="nf">apply</span><span class="p">(</span><span class="n">D_u</span><span class="p">,</span> <span class="n">new_dist</span><span class="p">):</span>
+        <span class="n">D_u</span> <span class="o">=</span> <span class="n">new_dist</span>
         
     <span class="c1"># scatter_nbrs: ALL_NBRS
-</span>    <span class="n">function</span> <span class="n">scatter</span><span class="p">(</span><span class="n">D_u</span><span class="p">,</span><span class="n">D</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">),</span><span class="n">D_v</span><span class="p">):</span>
-	<span class="c1"># If changed, activate neighbor
+</span>    <span class="k">def</span> <span class="nf">scatter</span><span class="p">(</span><span class="n">D_u</span><span class="p">,</span><span class="n">D</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">),</span><span class="n">D_v</span><span class="p">):</span>
+        <span class="c1"># If changed, activate neighbor
 </span>	<span class="k">if</span><span class="p">(</span><span class="n">changed</span><span class="p">(</span><span class="n">D_u</span><span class="p">)):</span>
-                 <span class="n">Activate</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+             <span class="n">Activate</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
 	<span class="k">if</span><span class="p">(</span><span class="n">increased</span><span class="p">(</span><span class="n">D_u</span><span class="p">)):</span>
-		<span class="k">return</span> <span class="n">NULL</span>
+	    <span class="k">return</span> <span class="n">NULL</span>
 	<span class="k">else</span><span class="p">:</span>
-            	<span class="k">return</span> <span class="n">D_u</span> <span class="o">+</span> <span class="n">D</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">)</span></code></pre></figure>
+            <span class="k">return</span> <span class="n">D_u</span> <span class="o">+</span> <span class="n">D</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">)</span>
+</code></pre></div></div>
 
 <h5 id="pros">Pros:</h5>
 <ul>
@@ -130,8 +129,7 @@ To explore underlying insights hidden in graph data, many graph analytics algori
 <p>To tackle the problem of short-sighted vertices in the vertex-centric model, the subgraph-centric (a.k.a. block-centric, partition-centric) programming model[3, 4] is proposed. Different from the vertex-centric model, the subgraph-centric model focuses on the entire subgraph, and is labeled as “think like a graph”. For the vertex-centric model, it uses the information of 1-hop neighbors to update the value of each vertex in one superstep. Instead, the subgraph-centric model leverages information within the whole subgraph. In addition, each vertex can send messages to any vertex in the graph, instead of 1-hop neighbors. In this way, the communication overhead and the number of supersteps are greatly reduced.</p>
 
 <p>The SSSP is expressed as follows in the subgraph-centric model.</p>
-
-<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">function</span> <span class="n">ComputeSSSP</span><span class="p">(</span><span class="n">subgraph</span><span class="p">,</span> <span class="n">messages</span><span class="p">):</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">ComputeSSSP</span><span class="p">(</span><span class="n">subgraph</span><span class="p">,</span> <span class="n">messages</span><span class="p">):</span>
     <span class="c1"># vertices with improved distances
 </span>    <span class="n">openset</span> <span class="o">=</span> <span class="n">NULL</span> 
     <span class="k">if</span> <span class="n">superstep</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span> <span class="c1"># initialize distances
@@ -151,7 +149,7 @@ To explore underlying insights hidden in graph data, many graph analytics algori
 	    <span class="n">SendToSubgraphVertex</span><span class="p">(</span><span class="n">boundarySG</span><span class="p">,</span> <span class="n">vertex</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
 	<span class="n">VoteToHalt</span><span class="p">()</span>
 
-<span class="n">function</span> <span class="n">dijkstra</span><span class="p">(</span><span class="n">openset</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">dijkstra</span><span class="p">(</span><span class="n">openset</span><span class="p">):</span>
     <span class="n">boundaryOpenset</span> <span class="o">=</span> <span class="n">NULL</span>
     <span class="k">while</span> <span class="n">openset</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">NULL</span><span class="p">:</span>
 	<span class="n">v</span> <span class="o">=</span> <span class="n">GetShortestVertex</span><span class="p">(</span><span class="n">openset</span><span class="p">)</span>
@@ -163,7 +161,8 @@ To explore underlying insights hidden in graph data, many graph analytics algori
 		<span class="n">v2</span><span class="p">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">v</span><span class="p">.</span><span class="n">value</span> <span class="o">+</span> <span class="n">dis</span><span class="p">(</span><span class="n">v</span><span class="p">,</span><span class="n">v2</span><span class="p">)</span>
 		<span class="n">openset</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">v2</span><span class="p">)</span> <span class="c1"># distance has improved
 </span>	<span class="n">openset</span><span class="p">.</span><span class="n">remove</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="c1"># done with this local vertex
-</span>    <span class="k">return</span> <span class="n">boundaryOpenset</span> </code></pre></figure>
+</span>    <span class="k">return</span> <span class="n">boundaryOpenset</span> 
+</code></pre></div></div>
 
 <h5 id="pros-1">Pros:</h5>
 <ul>
@@ -191,8 +190,7 @@ To explore underlying insights hidden in graph data, many graph analytics algori
 <p><img src="/blog/assets/images/gs-workflow.png" alt="vertex-model" /></p>
 
 <p>The following pseudo-code shows how SSSP is expressed in the PIE model, where the Dijkstra’s algorithm is directly used for the computation of parallel SSSP.</p>
-
-<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">function</span> <span class="n">dijkstra</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">vals</span><span class="p">,</span> <span class="n">updates</span><span class="p">):</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">dijkstra</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">vals</span><span class="p">,</span> <span class="n">updates</span><span class="p">):</span>
     <span class="n">heap</span> <span class="o">=</span> <span class="n">VertexHeap</span><span class="p">()</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">updates</span><span class="p">:</span>
 	<span class="n">vals</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">updates</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
@@ -215,14 +213,15 @@ To explore underlying insights hidden in graph data, many graph analytics algori
                     
 	<span class="k">return</span> <span class="n">updates</span>
 
-<span class="n">function</span> <span class="n">PEval</span><span class="p">(</span><span class="n">source</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">PEval</span><span class="p">(</span><span class="n">source</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">vertices</span><span class="p">:</span>
         <span class="n">updates</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="n">MAX_INT</span>
     <span class="n">updates</span><span class="p">[</span><span class="n">source</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="n">dijkstra</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">vals</span><span class="p">,</span> <span class="n">updates</span><span class="p">)</span>
     
-<span class="n">function</span> <span class="n">IncEval</span><span class="p">(</span><span class="n">source</span><span class="p">):</span>
-    <span class="n">dijkstra</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">vals</span><span class="p">,</span> <span class="n">updates</span><span class="p">)</span></code></pre></figure>
+<span class="k">def</span> <span class="nf">IncEval</span><span class="p">(</span><span class="n">source</span><span class="p">):</span>
+    <span class="n">dijkstra</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">vals</span><span class="p">,</span> <span class="n">updates</span><span class="p">)</span>
+</code></pre></div></div>
 
 <p>Currently, the PIE model has been developed and evaluated in the graph analytical engine of GraphScope. On the LDBC Graph Analytics benchmark, GraphScope outperforms other state-of-the-art graph processing systems (see link). Welcome to try and develop your own graph algorithms with GraphScope.</p>
 
