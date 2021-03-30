@@ -5,8 +5,8 @@
     <description>graphscope blog</description>
     <link>https://graphscope.io/blog/</link>
     <atom:link href="https://graphscope.io/blog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 30 Mar 2021 08:17:57 +0000</pubDate>
-    <lastBuildDate>Tue, 30 Mar 2021 08:17:57 +0000</lastBuildDate>
+    <pubDate>Tue, 30 Mar 2021 08:26:10 +0000</pubDate>
+    <lastBuildDate>Tue, 30 Mar 2021 08:26:10 +0000</lastBuildDate>
     <generator>Jekyll v4.2.0</generator>
     
       <item>
@@ -24,11 +24,48 @@ To explore underlying insights hidden in graph data, many graph analytics algori
 
 &lt;p&gt;With the vertex-centric model, the vertex program of single source shortest paths (SSSP) is expressed as follows.&lt;/p&gt;
 
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;n&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;VertexProgramForSSSP&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;# receive and merge incoming messages
+&lt;/span&gt;    &lt;span class=&quot;n&quot;&gt;incoming_msgs&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ReceiveMessages&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;merged_msg&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Reduce&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;incoming_msgs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;MIN&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    
+    &lt;span class=&quot;c1&quot;&gt;# update vertex property
+&lt;/span&gt;    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dist&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;merged_msg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;dist&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;merged_msg&lt;/span&gt;
+    
+    &lt;span class=&quot;c1&quot;&gt;# send messages to neighbors
+&lt;/span&gt;    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;each&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;neighbor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dist&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;edge_weight&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;neighbor_dist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;SendMessage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;neighbor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dist&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;edge_weight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+ &lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
 &lt;p&gt;However, the performance of Pregel drops dramatically when facing natural graphs which follow a power-law distribution. To solve this problem, PowerGraph[2] proposed the GAS (Gather-Apply-Scatter) programming model for the vertex-cut graph partitioning strategy. The Gather function runs locally on each partition and then one accumulator is sent from each mirror to the master. The master runs the Apply function and then sends the updated vertex data to all mirrors. Finally, the Scatter phase is run in parallel on mirrors to update the data on adjacent edges.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/blog/assets/images/gas.png&quot; alt=&quot;gas-model&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;Following the GAS abstraction, the SSSP can be implemented as follows:&lt;/p&gt;
+&lt;p&gt;Following the GAS abstraction, the SSSP can be implemented as follows.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;n&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;GASForSSSP&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;# gather_nbrs: ALL_NBRS
+&lt;/span&gt;    &lt;span class=&quot;n&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gather&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;D_u&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;D&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;u&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;D_v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    	&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;D_v&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;D&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;u&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    
+	&lt;span class=&quot;n&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt; 
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;min&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    
+	&lt;span class=&quot;n&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;apply&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;D_u&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;new_dist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;D_u&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;new_dist&lt;/span&gt;
+        
+	&lt;span class=&quot;c1&quot;&gt;# scatter_nbrs: ALL_NBRS
+&lt;/span&gt;	&lt;span class=&quot;n&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;scatter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;D_u&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;D&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;u&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;D_v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+		&lt;span class=&quot;c1&quot;&gt;# If changed, activate neighbor
+&lt;/span&gt;		&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;changed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;D_u&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)):&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;Activate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+		&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;increased&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;D_u&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)):&lt;/span&gt;
+			&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;NULL&lt;/span&gt;
+		&lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;D_u&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;D&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;u&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+ &lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;h5 id=&quot;pros&quot;&gt;Pros:&lt;/h5&gt;
 &lt;ul&gt;

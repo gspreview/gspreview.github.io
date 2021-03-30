@@ -71,11 +71,48 @@ To explore underlying insights hidden in graph data, many graph analytics algori
 
 <p>With the vertex-centric model, the vertex program of single source shortest paths (SSSP) is expressed as follows.</p>
 
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">function</span> <span class="n">VertexProgramForSSSP</span><span class="p">:</span>
+    <span class="c1"># receive and merge incoming messages
+</span>    <span class="n">incoming_msgs</span> <span class="o">&lt;-</span> <span class="n">ReceiveMessages</span><span class="p">()</span>
+    <span class="n">merged_msg</span> <span class="o">&lt;-</span> <span class="n">Reduce</span><span class="p">(</span><span class="n">incoming_msgs</span><span class="p">,</span> <span class="n">MIN</span><span class="p">)</span>
+    
+    <span class="c1"># update vertex property
+</span>    <span class="k">if</span> <span class="n">dist</span> <span class="o">&gt;</span> <span class="n">merged_msg</span><span class="p">:</span>
+        <span class="n">dist</span> <span class="o">=</span> <span class="n">merged_msg</span>
+    
+    <span class="c1"># send messages to neighbors
+</span>    <span class="k">for</span> <span class="n">each</span> <span class="n">neighbor</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">dist</span> <span class="o">+</span> <span class="n">edge_weight</span> <span class="o">&lt;</span> <span class="n">neighbor_dist</span><span class="p">:</span>
+            <span class="n">SendMessage</span><span class="p">(</span><span class="n">neighbor</span><span class="p">,</span> <span class="n">dist</span> <span class="o">+</span> <span class="n">edge_weight</span><span class="p">)</span>
+ </code></pre></figure>
+
 <p>However, the performance of Pregel drops dramatically when facing natural graphs which follow a power-law distribution. To solve this problem, PowerGraph[2] proposed the GAS (Gather-Apply-Scatter) programming model for the vertex-cut graph partitioning strategy. The Gather function runs locally on each partition and then one accumulator is sent from each mirror to the master. The master runs the Apply function and then sends the updated vertex data to all mirrors. Finally, the Scatter phase is run in parallel on mirrors to update the data on adjacent edges.</p>
 
 <p><img src="/blog/assets/images/gas.png" alt="gas-model" /></p>
 
-<p>Following the GAS abstraction, the SSSP can be implemented as follows:</p>
+<p>Following the GAS abstraction, the SSSP can be implemented as follows.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">function</span> <span class="n">GASForSSSP</span><span class="p">:</span>
+    <span class="c1"># gather_nbrs: ALL_NBRS
+</span>    <span class="n">function</span> <span class="n">gather</span><span class="p">(</span><span class="n">D_u</span><span class="p">,</span> <span class="n">D</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">),</span> <span class="n">D_v</span><span class="p">):</span>
+    	<span class="k">return</span> <span class="n">D_v</span> <span class="o">+</span> <span class="n">D</span><span class="p">(</span><span class="n">v</span><span class="p">,</span><span class="n">u</span><span class="p">)</span>
+    
+	<span class="n">function</span> <span class="nb">sum</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span> 
+        <span class="k">return</span> <span class="nb">min</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+    
+	<span class="n">function</span> <span class="nb">apply</span><span class="p">(</span><span class="n">D_u</span><span class="p">,</span> <span class="n">new_dist</span><span class="p">):</span>
+		<span class="n">D_u</span> <span class="o">=</span> <span class="n">new_dist</span>
+        
+	<span class="c1"># scatter_nbrs: ALL_NBRS
+</span>	<span class="n">function</span> <span class="n">scatter</span><span class="p">(</span><span class="n">D_u</span><span class="p">,</span><span class="n">D</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">),</span><span class="n">D_v</span><span class="p">):</span>
+		<span class="c1"># If changed, activate neighbor
+</span>		<span class="k">if</span><span class="p">(</span><span class="n">changed</span><span class="p">(</span><span class="n">D_u</span><span class="p">)):</span>
+            <span class="n">Activate</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+		<span class="k">if</span><span class="p">(</span><span class="n">increased</span><span class="p">(</span><span class="n">D_u</span><span class="p">)):</span>
+			<span class="k">return</span> <span class="n">NULL</span>
+		<span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">D_u</span> <span class="o">+</span> <span class="n">D</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">)</span>
+ </code></pre></figure>
 
 <h5 id="pros">Pros:</h5>
 <ul>
