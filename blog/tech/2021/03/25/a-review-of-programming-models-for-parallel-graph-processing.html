@@ -72,8 +72,8 @@ To explore underlying insights hidden in graph data, many graph analytics algori
 <p>With the vertex-centric model, the vertex program of single source shortest paths (SSSP) is expressed as follows.</p>
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">VertexProgramForSSSP</span><span class="p">():</span>
     <span class="c1"># receive and merge incoming messages
-</span>    <span class="n">incoming_msgs</span> <span class="o">&lt;-</span> <span class="n">ReceiveMessages</span><span class="p">()</span>
-    <span class="n">merged_msg</span> <span class="o">&lt;-</span> <span class="n">Reduce</span><span class="p">(</span><span class="n">incoming_msgs</span><span class="p">,</span> <span class="n">MIN</span><span class="p">)</span>
+</span>    <span class="n">incoming_msgs</span> <span class="o">=</span> <span class="n">ReceiveMessages</span><span class="p">()</span>
+    <span class="n">merged_msg</span> <span class="o">=</span> <span class="n">Reduce</span><span class="p">(</span><span class="n">incoming_msgs</span><span class="p">,</span> <span class="n">MIN</span><span class="p">)</span>
     
     <span class="c1"># update vertex property
 </span>    <span class="k">if</span> <span class="n">dist</span> <span class="o">&gt;</span> <span class="n">merged_msg</span><span class="p">:</span>
