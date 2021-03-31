@@ -61,11 +61,11 @@
             <p><img src="/blog/assets/images/programing-models.jpg" alt="programing-models" />
 To explore underlying insights hidden in graph data, many graph analytics algorithms, e.g., PageRank and single source shortest paths (the Dijkstra’s algorithm), have been designed to solve different problems.</p>
 
-<p>In a single machine environment, developers can easily implement sequential solutions to these algorithms as they have a global view of the graph and can freely iterate through all vertices and edges. Current graph data in real industrial scenarios usually consists of billions of vertices and trillions of edges. Such graph has to be divided into multiple partitions, and stored and processed in a distributed/parallel way. To allow developers to succinctly express graph algorithms under such environment, many programming models for parallel graph processing have been proposed. In this post, we would like to introduce some commonly used programming models, and further discuss their pros and cons.</p>
+<p>In a single machine environment, developers can easily implement sequential solutions to these algorithms as they have a global view of the graph and can freely iterate through all vertices and edges. Current graph data in real industrial scenarios usually consists of billions of vertices and trillions of edges. Such a graph has to be divided into multiple partitions, and stored and processed in a distributed/parallel way. To allow developers to succinctly express graph algorithms under such environment, many programming models for parallel graph processing have been proposed. In this post, we would like to introduce some commonly used programming models, and further discuss their pros and cons.</p>
 
 <h4 id="think-like-a-vertex">Think like a vertex</h4>
 
-<p>The vertex-centric model proposed in Pregel[1] follows the philosophy of “think like a vertex”, where each vertex contains information about itself as well as all its adjacent edges, and the computation is expressed at the level of a single vertex. More specifically, the entire computation process is divided into multiple iterations (called supersteps), and in each superstep, all vertices execute the same user-defined function (called vertex program) that expresses the logic of a given algorithm. The vertex program defines how each vertex processes incoming messages (sent in the previous superstep), and sends messages to other vertices (for the next superstep). The iterations terminate until no messages are sent from any vertex, indicating a halt.</p>
+<p>The vertex-centric model proposed in Pregel[1] follows the philosophy of “think like a vertex”, where each vertex contains information about itself as well as all its adjacent edges, and the computation is expressed at the level of a single vertex. More specifically, the entire computation process is divided into multiple iterations (called <em>supersteps</em>), and in each superstep, all vertices execute the same user-defined function (called <em>vertex program</em>) that expresses the logic of a given algorithm. The vertex program defines how each vertex processes incoming messages (sent in the previous superstep), and sends messages to other vertices (for the next superstep). The iterations terminate until no messages are sent from any vertex, indicating a halt.</p>
 
 <p><img src="/blog/assets/images/vertex-messaging.png" alt="vertex-model" /></p>
 
@@ -80,12 +80,12 @@ To explore underlying insights hidden in graph data, many graph analytics algori
         <span class="n">dist</span> <span class="o">=</span> <span class="n">merged_msg</span>
     
     <span class="c1"># send messages to neighbors
-</span>    <span class="k">for</span> <span class="n">each</span> <span class="n">neighbor</span><span class="p">:</span>
+</span>    <span class="k">for</span> <span class="n">neighbor</span> <span class="ow">in</span> <span class="n">neighbors</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">dist</span> <span class="o">+</span> <span class="n">edge_weight</span> <span class="o">&lt;</span> <span class="n">neighbor_dist</span><span class="p">:</span>
             <span class="n">SendMessage</span><span class="p">(</span><span class="n">neighbor</span><span class="p">,</span> <span class="n">dist</span> <span class="o">+</span> <span class="n">edge_weight</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p>However, the performance of Pregel drops dramatically when facing natural graphs which follow a power-law distribution. To solve this problem, PowerGraph[2] proposed the GAS (Gather-Apply-Scatter) programming model for the vertex-cut graph partitioning strategy. The Gather function runs locally on each partition and then one accumulator is sent from each mirror to the master. The master runs the Apply function and then sends the updated vertex data to all mirrors. Finally, the Scatter phase is run in parallel on mirrors to update the data on adjacent edges.</p>
+<p>However, the performance of Pregel drops dramatically when facing natural graphs which follow a power-law distribution. To solve this problem, PowerGraph[2] proposed the GAS (Gather-Apply-Scatter) programming model for the vertex-cut graph partitioning strategy. The <em>Gather</em> function runs locally on each partition and then one accumulator is sent from each mirror to the master. The master runs the <em>Apply</em> function and then sends the updated vertex data to all mirrors. Finally, the <em>Scatter</em> phase is run in parallel on mirrors to update the data on adjacent edges.</p>
 
 <p><img src="/blog/assets/images/gas.png" alt="gas-model" /></p>
 
@@ -105,7 +105,7 @@ To explore underlying insights hidden in graph data, many graph analytics algori
 </span>    <span class="k">def</span> <span class="nf">scatter</span><span class="p">(</span><span class="n">D_u</span><span class="p">,</span><span class="n">D</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">),</span><span class="n">D_v</span><span class="p">):</span>
         <span class="c1"># If changed, activate neighbor
 </span>	<span class="k">if</span><span class="p">(</span><span class="n">changed</span><span class="p">(</span><span class="n">D_u</span><span class="p">)):</span>
-             <span class="n">Activate</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+	    <span class="n">Activate</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
 	<span class="k">if</span><span class="p">(</span><span class="n">increased</span><span class="p">(</span><span class="n">D_u</span><span class="p">)):</span>
 	    <span class="k">return</span> <span class="n">NULL</span>
 	<span class="k">else</span><span class="p">:</span>
@@ -209,17 +209,16 @@ To explore underlying insights hidden in graph data, many graph analytics algori
 		<span class="n">vals</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="n">distv</span>
 		    <span class="k">if</span> <span class="n">g</span><span class="p">.</span><span class="n">is_inner_vertex</span><span class="p">(</span><span class="n">v</span><span class="p">):</span>
 			<span class="n">heap</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">distv</span><span class="p">)</span>
-			<span class="n">updates</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="n">distv</span>
-                    
+			<span class="n">updates</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="n">distv</span>       
 	<span class="k">return</span> <span class="n">updates</span>
 
-<span class="k">def</span> <span class="nf">PEval</span><span class="p">(</span><span class="n">source</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">PEval</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">vals</span><span class="p">,</span> <span class="n">updates</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">vertices</span><span class="p">:</span>
         <span class="n">updates</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="n">MAX_INT</span>
     <span class="n">updates</span><span class="p">[</span><span class="n">source</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="n">dijkstra</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">vals</span><span class="p">,</span> <span class="n">updates</span><span class="p">)</span>
     
-<span class="k">def</span> <span class="nf">IncEval</span><span class="p">(</span><span class="n">source</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">IncEval</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">vals</span><span class="p">,</span> <span class="n">updates</span><span class="p">):</span>
     <span class="n">dijkstra</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">vals</span><span class="p">,</span> <span class="n">updates</span><span class="p">)</span>
 </code></pre></div></div>
 
