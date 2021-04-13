@@ -5,9 +5,64 @@
     <description>graphscope blog</description>
     <link>https://graphscope.io/blog/</link>
     <atom:link href="https://graphscope.io/blog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 06 Apr 2021 02:47:30 +0000</pubDate>
-    <lastBuildDate>Tue, 06 Apr 2021 02:47:30 +0000</lastBuildDate>
+    <pubDate>Tue, 13 Apr 2021 07:41:29 +0000</pubDate>
+    <lastBuildDate>Tue, 13 Apr 2021 07:41:29 +0000</lastBuildDate>
     <generator>Jekyll v4.2.0</generator>
+    
+      <item>
+        <title>Release Notes: v0.3.0</title>
+        <description>&lt;p&gt;&lt;img src=&quot;/blog/assets/images/release_note_t.png&quot; alt=&quot;release-note&quot; /&gt;
+GraphScope v0.3.0 is released as scheduled. This release includes new features and major updates for  frontend APIs for graph manipulation, integration with other systems as well as code optimization for some built-in applications. Another direction we are working on is to ease the deployment of GraphScope with/without Kubernetes.&lt;/p&gt;
+
+&lt;p&gt;We highlight the following improvements included in this release:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Better integration with other systems&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;GraphScope aims to support easy integrations with other big data processing system. As a first step, this release supported that the results (in the format of dataframe) of GraphScope can be further processed by Mars, a distributed tensor-based computation engine.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Performance and function enhancement&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Pre-compile a set of commonly used applications and graphs into the docker image to improve the response time of each operation in Python.&lt;/li&gt;
+  &lt;li&gt;Optimize the implementation of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;session.gremlin(...)&lt;/code&gt;and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;session.close()&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;Support Louvain algorithm as a built-in application in the graph analytics engine.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Improved graph manipulation APIs&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Support for adding vertices and edges to existing graph.&lt;/li&gt;
+  &lt;li&gt;Add a general project operator.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Easier deployment with/without Kubernetes.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;GraphScope v0.3.0 provided a script to deploy GraphScope on a Kubernetes cluster of AWS/aliyun.&lt;/li&gt;
+  &lt;li&gt;Support deployment with HELM and generalize &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;k8s_volumes&lt;/code&gt; to support PVC mount.&lt;/li&gt;
+  &lt;li&gt;This release started to support the deployment and running of GraphScope locally without Kubernetes.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;For more detailed improvements that have been made in this release, please refer to the complete &lt;a href=&quot;https://github.com/alibaba/GraphScope/releases/tag/v0.3.0&quot;&gt;changelog&lt;/a&gt;.&lt;/p&gt;
+</description>
+        <pubDate>Sun, 11 Apr 2021 03:33:20 +0000</pubDate>
+        <link>https://graphscope.io/blog/releasenotes/2021/04/11/release-notes-0.3.0.html</link>
+        <guid isPermaLink="true">https://graphscope.io/blog/releasenotes/2021/04/11/release-notes-0.3.0.html</guid>
+        
+        
+        <category>ReleaseNotes</category>
+        
+      </item>
     
       <item>
         <title>A Review of Programming Models for Parallel Graph Processing</title>
