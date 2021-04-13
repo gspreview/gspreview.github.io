@@ -64,41 +64,40 @@ GraphScope v0.3.0 is released as scheduled. This release includes new features a
 <p>We highlight the following improvements included in this release:</p>
 
 <ol>
-  <li>Better integration with other systems</li>
+  <li>
+    <p>Better integration with other systems</p>
+
+    <ul>
+      <li>GraphScope aims to support easy integrations with other big data processing system. As a first step, this release supported that the results (in the format of dataframe) of GraphScope can be further processed by Mars, a distributed tensor-based computation engine.</li>
+    </ul>
+  </li>
+  <li>
+    <p>Performance and function enhancement</p>
+
+    <ul>
+      <li>Pre-compile a set of commonly used applications and graphs into the docker image to improve the response time of each operation in Python.</li>
+      <li>Optimize the implementation of <code class="language-plaintext highlighter-rouge">session.gremlin(...)</code>and <code class="language-plaintext highlighter-rouge">session.close()</code>.</li>
+      <li>Support Louvain algorithm as a built-in application in the graph analytics engine.</li>
+    </ul>
+  </li>
+  <li>
+    <p>Improved graph manipulation APIs</p>
+
+    <ul>
+      <li>Support for adding vertices and edges to existing graph.</li>
+      <li>Add a general project operator.</li>
+    </ul>
+  </li>
+  <li>
+    <p>Easier deployment with/without Kubernetes.</p>
+
+    <ul>
+      <li>GraphScope v0.3.0 provided a script to deploy GraphScope on a Kubernetes cluster of AWS/aliyun.</li>
+      <li>Support deployment with HELM and generalize <code class="language-plaintext highlighter-rouge">k8s_volumes</code> to support PVC mount.</li>
+      <li>This release started to support the deployment and running of GraphScope locally without Kubernetes.</li>
+    </ul>
+  </li>
 </ol>
-
-<ul>
-  <li>GraphScope aims to support easy integrations with other big data processing system. As a first step, this release supported that the results (in the format of dataframe) of GraphScope can be further processed by Mars, a distributed tensor-based computation engine.</li>
-</ul>
-
-<ol>
-  <li>Performance and function enhancement</li>
-</ol>
-
-<ul>
-  <li>Pre-compile a set of commonly used applications and graphs into the docker image to improve the response time of each operation in Python.</li>
-  <li>Optimize the implementation of <code class="language-plaintext highlighter-rouge">session.gremlin(...)</code>and <code class="language-plaintext highlighter-rouge">session.close()</code>.</li>
-  <li>Support Louvain algorithm as a built-in application in the graph analytics engine.</li>
-</ul>
-
-<ol>
-  <li>Improved graph manipulation APIs</li>
-</ol>
-
-<ul>
-  <li>Support for adding vertices and edges to existing graph.</li>
-  <li>Add a general project operator.</li>
-</ul>
-
-<ol>
-  <li>Easier deployment with/without Kubernetes.</li>
-</ol>
-
-<ul>
-  <li>GraphScope v0.3.0 provided a script to deploy GraphScope on a Kubernetes cluster of AWS/aliyun.</li>
-  <li>Support deployment with HELM and generalize <code class="language-plaintext highlighter-rouge">k8s_volumes</code> to support PVC mount.</li>
-  <li>This release started to support the deployment and running of GraphScope locally without Kubernetes.</li>
-</ul>
 
 <p>For more detailed improvements that have been made in this release, please refer to the complete <a href="https://github.com/alibaba/GraphScope/releases/tag/v0.3.0">changelog</a>.</p>
 
