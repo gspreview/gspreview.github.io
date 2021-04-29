@@ -5,9 +5,84 @@
     <description>graphscope blog</description>
     <link>https://graphscope.io/blog/</link>
     <atom:link href="https://graphscope.io/blog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 20 Apr 2021 03:53:20 +0000</pubDate>
-    <lastBuildDate>Tue, 20 Apr 2021 03:53:20 +0000</lastBuildDate>
+    <pubDate>Thu, 29 Apr 2021 03:46:12 +0000</pubDate>
+    <lastBuildDate>Thu, 29 Apr 2021 03:46:12 +0000</lastBuildDate>
     <generator>Jekyll v4.2.0</generator>
+    
+      <item>
+        <title>Introducing GAIA: A Scalable Engine for Gremlin – the SQL for Graphs</title>
+        <description>&lt;p&gt;&lt;img src=&quot;/blog/assets/images/gaia.png&quot; alt=&quot;gaia&quot; /&gt;
+GAIA extends GraphScope with &lt;a href=&quot;https://tinkerpop.apache.org/gremlin.html&quot;&gt;Gremlin&lt;/a&gt;, the industry’s de facto standard property graph query language defined and maintained by &lt;a href=&quot;http://tinkerpop.apache.org/&quot;&gt;the Apache TinkerPop project&lt;/a&gt;, which is widely adopted by popular graph database vendors such as &lt;a href=&quot;https://neo4j.com/&quot;&gt;Neo4j&lt;/a&gt;, &lt;a href=&quot;https://www.orientdb.org/&quot;&gt;OrientDB&lt;/a&gt;, &lt;a href=&quot;https://janusgraph.org/&quot;&gt;JanusGraph&lt;/a&gt;, &lt;a href=&quot;https://azure.microsoft.com/en-us/services/cosmos-db/&quot;&gt;Microsoft Cosmos DB&lt;/a&gt;, and &lt;a href=&quot;https://aws.amazon.com/neptune/&quot;&gt;Amazon Neptune&lt;/a&gt;. GAIA is the first open-source implementation of Gremlin in a distributed or big-data environment in the industry.&lt;/p&gt;
+
+&lt;h4 id=&quot;making-gremlin-accessible-to-data-scientists-historical-background&quot;&gt;Making Gremlin Accessible to Data Scientists: Historical Background&lt;/h4&gt;
+
+&lt;p&gt;Since about two years ago, we have heard an increasing demand from data scientists at Alibaba to extract insights from structural patterns on massive heterogeneous datasets in a wide variety of important application domains such as e-commerce, on-line payments, and social media. Such data is naturally modeled as graphs to encode complex interrelationships among entities.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/blog/assets/images/gaia-graph.png&quot; alt=&quot;cycle_detection.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;As an example, consider the graph depicted in the above figure. It is a simplified subgraph pattern of the one employed at Alibaba for credit-card fraud detection [2,3]. By using a fake identifier, the “criminal” may obtain a short-term credit from a bank (vertex 4). He/she tries to illegally cash out money by forging a purchase (edge 2–&amp;gt;3) at time t1 with the help of a merchant (vertex 3). Once receiving payment (edge 4–&amp;gt;3) from the bank (vertex 4), the merchant tries to send the money back (edges 3–&amp;gt;1 and 1–&amp;gt;2) to the “criminal” via multiple accounts of a middle man (vertex 1) at time t3 and t4, respectively. This pattern eventually forms a cycle (2–&amp;gt;3–&amp;gt;1…–&amp;gt;2).&lt;/p&gt;
+
+&lt;p&gt;In practice, the graph can contain billions of vertices (e.g., users) and hundreds of billions to trillions of edges (e.g., payments), and the entire fraudulent process can involve much more complex chains of transactions, through many entities, with various constraints, which therefore requires complex interactive analysis to identify. Although many distributed and parallel graph processing frameworks exist, writing efficient distributed algorithms for each particular task is exceedingly hard [4], especially for our target users of domain experts or data scientists.&lt;/p&gt;
+
+&lt;p&gt;Motivated by the above (and many other) use cases, we started the GAIA project to offer a new distributed infrastructure for this new class of graph applications. GAIA differs from prior systems in two important ways: by exploiting Gremlin to provide a high-level language for graph and/or pattern traversal, and by supporting automatic parallel execution with advanced optimizations such as hybrid (BFS/DFS) traversal for bounded-memory execution and early stop (to avoid wasted computation).&lt;/p&gt;
+
+&lt;h4 id=&quot;scaling-gremlin-for-large-distributed-graphs-a-closer-look&quot;&gt;Scaling Gremlin for Large Distributed Graphs: A Closer Look&lt;/h4&gt;
+
+&lt;p&gt;Gremlin offers a flexible and expressive programming model to enable non-technical users to succinctly express complex traversal patterns in real-world applications. For example, one can write the above fraud-detection query in just a couple of lines using Gremlin, as shown below. In contrast, even common operations like cycle detection, which is a core part of the fraud-detection use case, is tricky to implement in existing graph systems.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;g.V('account').has('id','2').as('s')
+  .repeat(out('transfer').simplePath())
+  .times(k-1)
+  .where(out('transfer').as('s'))
+  .path().limit(1)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;The query finds cyclic paths of length &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;k&lt;/code&gt;, starting from a given account. First, the source operator &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;V&lt;/code&gt; (with the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;has&lt;/code&gt; filter) returns all the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;account&lt;/code&gt; vertices with an identifier of “2”. The &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;as&lt;/code&gt; operator is a &lt;em&gt;modulator&lt;/em&gt; that introduces a tag (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;s&lt;/code&gt; in this case) for later references. Second, it traverses the outgoing &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;transfer&lt;/code&gt; edges for exactly &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;k-1&lt;/code&gt; times, skipping any repeated vertices (by the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;simplePath&lt;/code&gt; operator). Third, the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;where&lt;/code&gt; operator checks if the starting vertex &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;s&lt;/code&gt; can be reached by one more step, that is, whether a cycle of length &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;k&lt;/code&gt; is formed. Finally, for qualifying traversers, the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;path&lt;/code&gt; operator returns the full path information. The &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;limit&lt;/code&gt; operator at the end indicates only one such result is needed.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;GAIA is designed to faithfully preserve the programming model of Gremlin. As a result, it can be used to scale existing Gremlin applications to large compute clusters with no (or minimum) modification. GAIA achieves high performance for complex Gremlin traversal by compiling it into a  dataflow that can be executed efficiently in a distributed system deployed on large clusters. We refer interested readers to this paper [1] for the full technical details of GAIA.&lt;/p&gt;
+
+&lt;p&gt;The following figure shows a comparison between GAIA and JanusGraph using the &lt;a href=&quot;http://ldbcouncil.org/benchmarks/snb&quot;&gt;LDBC Social Network Benchmark&lt;/a&gt; (Interactive Workload). JanusGraph cannot process query in parallel, and we run GAIA in one machine for fair comparison. We run each query on GAIA with the degree of parallelism varying from 1 to 16, and report its max and min latency for each query while compared to JanusGraph.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/blog/assets/images/gaia-perf.png&quot; alt=&quot;GAIA-perf_JanusGraph.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;JanusGraph fails to answer many queries (CR-&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;3,5,9&lt;/code&gt;) due to out-of-time (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;OT&lt;/code&gt;). As shown, even the maximum latency (single-thread) of GAIA is much shorter than that of JanusGraph in all cases. In addition, GAIA can scale those large, complex traversal queries almost linearly across multiple servers [1].&lt;/p&gt;
+
+&lt;h4 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h4&gt;
+
+&lt;p&gt;We’ve been building GAIA at Alibaba for over a year now and it is still under very active development. Find the current &lt;a href=&quot;https://github.com/alibaba/GraphScope/tree/main/research/gaia&quot;&gt;pre-release on GitHub here&lt;/a&gt;. Meanwhile, we are working on integrating GAIA into &lt;a href=&quot;https://github.com/alibaba/GraphScope&quot;&gt;the GraphScope project&lt;/a&gt; to make the “SQL for Graphs” available for a wider community of users to work with big data or data science. An early alpha release of GAIA will be included in GraphScope coming this summer, and we will further develop and refine GAIA to ship more Gremlin features such as the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;match&lt;/code&gt;-step for declarative pattern queries and iterative graph algorithms via the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;subgraph&lt;/code&gt;-step, both tentatively scheduled for release in late 2021.&lt;/p&gt;
+
+&lt;p&gt;Graph technology is changing AI [5]. We’re excited to be creating new tools and fostering innovative graph solutions in the amazing community. We look forward to your feedbacks and contributions.&lt;/p&gt;
+
+&lt;h4 id=&quot;references&quot;&gt;References&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;[1] Zhengping Qian, Chenqiang Min, Longbin Lai, Yong Fang, Gaofeng Li, Youyang Yao, Bingqing Lyu, Zhimin Chen, Jingren Zhou. GraphScope: A System for Interactive Analysis on Distributed Graphs Using a High-Level Language. (&lt;a href=&quot;https://www.usenix.org/system/files/nsdi21-qian.pdf&quot;&gt;pdf&lt;/a&gt;)&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;[2] Bingqing Lyu, Lu Qin, Xuemin Lin, Ying Zhang, Zhengping Qian, and Jingren Zhou. Maximum biclique search at billion scale.  Awarded Best Paper Runner-up in VLDB 2020. (&lt;a href=&quot;http://www.vldb.org/pvldb/vol13/p1359-lyu.pdf&quot;&gt;pdf&lt;/a&gt;)&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;[3] Xiafei Qiu, Wubin Cen, Zhengping Qian, You Peng, Ying Zhang, Xuemin Lin, and Jingren Zhou. Real-time constrained cycle detection in large dynamic graphs.  In VLDB 2018. (&lt;a href=&quot;http://www.vldb.org/pvldb/vol11/p1876-qiu.pdf&quot;&gt;pdf&lt;/a&gt;)&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;[4] Vasiliki Kalavri, Vladimir Vlassov, Seif Haridi. High-Level Programming Abstractions for Distributed Graph Processing. (&lt;a href=&quot;https://arxiv.org/pdf/1607.02646v1.pdf&quot;&gt;pdf&lt;/a&gt;)&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;[5] Robert H.P. Engels. The Rise of Graph Technology. https://www.linkedin.com/pulse/rise-graph-technology-robert-h-p-engels-/&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Thu, 29 Apr 2021 02:10:42 +0000</pubDate>
+        <link>https://graphscope.io/blog/tech/2021/04/29/Introducing-gaia-a-scalable-engine-for-gremlin-the-sql-for-graphs.html</link>
+        <guid isPermaLink="true">https://graphscope.io/blog/tech/2021/04/29/Introducing-gaia-a-scalable-engine-for-gremlin-the-sql-for-graphs.html</guid>
+        
+        
+        <category>Tech</category>
+        
+      </item>
     
       <item>
         <title>Release Notes: v0.3.0</title>
