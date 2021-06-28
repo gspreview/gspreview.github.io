@@ -5,8 +5,8 @@
     <description>graphscope blog</description>
     <link>https://graphscope.io/blog/</link>
     <atom:link href="https://graphscope.io/blog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 28 Jun 2021 02:19:46 +0000</pubDate>
-    <lastBuildDate>Mon, 28 Jun 2021 02:19:46 +0000</lastBuildDate>
+    <pubDate>Mon, 28 Jun 2021 02:30:36 +0000</pubDate>
+    <lastBuildDate>Mon, 28 Jun 2021 02:30:36 +0000</lastBuildDate>
     <generator>Jekyll v4.2.0</generator>
     
       <item>
@@ -19,36 +19,35 @@ We are glad to announce the GraphScope 0.5 release. As the first step towards th
 ​&lt;/p&gt;
 
 &lt;ol&gt;
-  &lt;li&gt;GraphScope-Store: A persistent store for mutable graphs. Currently, it has supported the following features/functions:&lt;/li&gt;
-&lt;/ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;GraphScope-Store: A persistent store for mutable graphs. Currently, it has supported the following features/functions:&lt;/p&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;A bulk-load tool to import a property graph from files to the GraphScope-Store instance.&lt;/li&gt;
-  &lt;li&gt;Helm support to launch GraphScope as a service with a store.&lt;/li&gt;
-  &lt;li&gt;Support for multiple session connections to a store.&lt;/li&gt;
-  &lt;li&gt;Interactive queries on graphs in the store with Gremlin.&lt;/li&gt;
-&lt;/ul&gt;
+    &lt;ul&gt;
+      &lt;li&gt;A bulk-load tool to import a property graph from files to the GraphScope-Store instance.&lt;/li&gt;
+      &lt;li&gt;Helm support to launch GraphScope as a service with a store.&lt;/li&gt;
+      &lt;li&gt;Support for multiple session connections to a store.&lt;/li&gt;
+      &lt;li&gt;Interactive queries on graphs in the store with Gremlin.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Lazy evaluation&lt;/p&gt;
 
-&lt;ol&gt;
-  &lt;li&gt;Lazy evaluation&lt;/li&gt;
-&lt;/ol&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Support to switch between lazy-mode and eager-mode by just setting the value of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mode&lt;/code&gt; as &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;lazy&lt;/code&gt; or &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;eager&lt;/code&gt; when creating a session &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;graphscope.session(mode='lazy'or 'eager')&lt;/code&gt;.&lt;/li&gt;
+      &lt;li&gt;Adapt the NetworkX interfaces to switch between eager and lazy modes.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Enhanced NetworkX compatibility&lt;/p&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;Support to switch between lazy-mode and eager-mode by just setting the value of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mode&lt;/code&gt; as &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;lazy&lt;/code&gt; or &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;eager&lt;/code&gt; when creating a session &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;graphscope.session(mode='lazy'or 'eager')&lt;/code&gt;.&lt;/li&gt;
-  &lt;li&gt;Adapt the NetworkX interfaces to switch between eager and lazy modes.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Enhanced NetworkX compatibility&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Support for multi-queries on duplications of the whole graph.&lt;/li&gt;
-  &lt;li&gt;Add all-pairs shortest paths and closeness centrality algorithms.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Provide a &lt;a href=&quot;https://graphscope.io/docs/frequently_asked_questions.html&quot;&gt;Q&amp;amp;A page&lt;/a&gt; for beginners&lt;/li&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Support for multi-queries on duplications of the whole graph.&lt;/li&gt;
+      &lt;li&gt;Add all-pairs shortest paths and closeness centrality algorithms.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Provide a &lt;a href=&quot;https://graphscope.io/docs/frequently_asked_questions.html&quot;&gt;Q&amp;amp;A page&lt;/a&gt; for beginners&lt;/p&gt;
+  &lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;p&gt;For more detailed improvements that have been made in this release, please refer to the complete &lt;a href=&quot;https://github.com/alibaba/GraphScope/releases/tag/v0.5.0&quot;&gt;changelog&lt;/a&gt;.&lt;/p&gt;

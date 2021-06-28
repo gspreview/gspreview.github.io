@@ -66,36 +66,35 @@ We are glad to announce the GraphScope 0.5 release. As the first step towards th
 ​</p>
 
 <ol>
-  <li>GraphScope-Store: A persistent store for mutable graphs. Currently, it has supported the following features/functions:</li>
-</ol>
+  <li>
+    <p>GraphScope-Store: A persistent store for mutable graphs. Currently, it has supported the following features/functions:</p>
 
-<ul>
-  <li>A bulk-load tool to import a property graph from files to the GraphScope-Store instance.</li>
-  <li>Helm support to launch GraphScope as a service with a store.</li>
-  <li>Support for multiple session connections to a store.</li>
-  <li>Interactive queries on graphs in the store with Gremlin.</li>
-</ul>
+    <ul>
+      <li>A bulk-load tool to import a property graph from files to the GraphScope-Store instance.</li>
+      <li>Helm support to launch GraphScope as a service with a store.</li>
+      <li>Support for multiple session connections to a store.</li>
+      <li>Interactive queries on graphs in the store with Gremlin.</li>
+    </ul>
+  </li>
+  <li>
+    <p>Lazy evaluation</p>
 
-<ol>
-  <li>Lazy evaluation</li>
-</ol>
+    <ul>
+      <li>Support to switch between lazy-mode and eager-mode by just setting the value of <code class="language-plaintext highlighter-rouge">mode</code> as <code class="language-plaintext highlighter-rouge">lazy</code> or <code class="language-plaintext highlighter-rouge">eager</code> when creating a session <code class="language-plaintext highlighter-rouge">graphscope.session(mode='lazy'or 'eager')</code>.</li>
+      <li>Adapt the NetworkX interfaces to switch between eager and lazy modes.</li>
+    </ul>
+  </li>
+  <li>
+    <p>Enhanced NetworkX compatibility</p>
 
-<ul>
-  <li>Support to switch between lazy-mode and eager-mode by just setting the value of <code class="language-plaintext highlighter-rouge">mode</code> as <code class="language-plaintext highlighter-rouge">lazy</code> or <code class="language-plaintext highlighter-rouge">eager</code> when creating a session <code class="language-plaintext highlighter-rouge">graphscope.session(mode='lazy'or 'eager')</code>.</li>
-  <li>Adapt the NetworkX interfaces to switch between eager and lazy modes.</li>
-</ul>
-
-<ol>
-  <li>Enhanced NetworkX compatibility</li>
-</ol>
-
-<ul>
-  <li>Support for multi-queries on duplications of the whole graph.</li>
-  <li>Add all-pairs shortest paths and closeness centrality algorithms.</li>
-</ul>
-
-<ol>
-  <li>Provide a <a href="https://graphscope.io/docs/frequently_asked_questions.html">Q&amp;A page</a> for beginners</li>
+    <ul>
+      <li>Support for multi-queries on duplications of the whole graph.</li>
+      <li>Add all-pairs shortest paths and closeness centrality algorithms.</li>
+    </ul>
+  </li>
+  <li>
+    <p>Provide a <a href="https://graphscope.io/docs/frequently_asked_questions.html">Q&amp;A page</a> for beginners</p>
+  </li>
 </ol>
 
 <p>For more detailed improvements that have been made in this release, please refer to the complete <a href="https://github.com/alibaba/GraphScope/releases/tag/v0.5.0">changelog</a>.</p>
