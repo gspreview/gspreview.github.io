@@ -5,9 +5,52 @@
     <description>graphscope blog</description>
     <link>https://graphscope.io/blog/</link>
     <atom:link href="https://graphscope.io/blog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 28 Jun 2021 02:40:01 +0000</pubDate>
-    <lastBuildDate>Mon, 28 Jun 2021 02:40:01 +0000</lastBuildDate>
+    <pubDate>Mon, 02 Aug 2021 02:49:03 +0000</pubDate>
+    <lastBuildDate>Mon, 02 Aug 2021 02:49:03 +0000</lastBuildDate>
     <generator>Jekyll v4.2.0</generator>
+    
+      <item>
+        <title>Release Notes: v0.6.0</title>
+        <description>&lt;p&gt;&lt;img src=&quot;/blog/assets/images/release_note_t.png&quot; alt=&quot;release-note&quot; /&gt;
+We are glad to announce the release of GraphScope 0.6. This major release integrates a new graph interactive engine GAIA, which supports efficient parallel execution and bounded-memory execution for gremlin queries. More technical details of GAIA can refer to our published &lt;a href=&quot;https://www.usenix.org/system/files/nsdi21-qian.pdf&quot;&gt;NSDI paper&lt;/a&gt;. Note that currently the integration of GAIA with GraphScope is experimental, and is not recommended for production use (yet)! In addition, this release improves the experience of local deployment on MacOS, Ubuntu and CentOS, and adds more graph analytics algorithms.&lt;/p&gt;
+
+&lt;p&gt;We highlight the following improvements included in this release:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;[Experimental] Integrate GAIA, a graph interactive query, into GraphScope. Currently, it has supported the following features/functions:&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;Support efficient and scalable gremlin query with commonly used gremlin steps, including nested traversal;&lt;/li&gt;
+      &lt;li&gt;Support advanced optimizations such as bounded-memory execution and early stop;&lt;/li&gt;
+      &lt;li&gt;Support interactive gremlin query with GAIA engine on GraphScope-Store (persistent store) or Vineyard (in-memory store).&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Lazy evaluation support for graph interactive engine and graph learning engine.
+​&lt;/li&gt;
+  &lt;li&gt;A &lt;a href=&quot;https://github.com/alibaba/GraphScope/blob/main/scripts/deploy_local.sh&quot;&gt;script&lt;/a&gt; supporting local deployment on MacOS, Ubuntu and CentOS.
+​&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Add more graph analytics algorithms as built-in applications.&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;node_boundary&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;edge_boundary&lt;/code&gt; applications&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pagerank&lt;/code&gt; in NetworkX version&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;is_simple_path&lt;/code&gt; application&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;For more detailed improvements that have been made in this release, please refer to the complete &lt;a href=&quot;https://github.com/alibaba/GraphScope/releases/tag/v0.6.0&quot;&gt;changelog&lt;/a&gt;.&lt;/p&gt;
+</description>
+        <pubDate>Sun, 01 Aug 2021 03:33:20 +0000</pubDate>
+        <link>https://graphscope.io/blog/releasenotes/2021/08/01/release-notes-0.6.0.html</link>
+        <guid isPermaLink="true">https://graphscope.io/blog/releasenotes/2021/08/01/release-notes-0.6.0.html</guid>
+        
+        
+        <category>ReleaseNotes</category>
+        
+      </item>
     
       <item>
         <title>Release Notes: v0.5.0</title>
