@@ -5,8 +5,8 @@
     <description>graphscope blog</description>
     <link>https://graphscope.io/blog/</link>
     <atom:link href="https://graphscope.io/blog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 02 Aug 2021 02:49:03 +0000</pubDate>
-    <lastBuildDate>Mon, 02 Aug 2021 02:49:03 +0000</lastBuildDate>
+    <pubDate>Mon, 02 Aug 2021 03:08:00 +0000</pubDate>
+    <lastBuildDate>Mon, 02 Aug 2021 03:08:00 +0000</lastBuildDate>
     <generator>Jekyll v4.2.0</generator>
     
       <item>
@@ -26,10 +26,18 @@ We are glad to announce the release of GraphScope 0.6. This major release integr
       &lt;li&gt;Support interactive gremlin query with GAIA engine on GraphScope-Store (persistent store) or Vineyard (in-memory store).&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;Lazy evaluation support for graph interactive engine and graph learning engine.
-​&lt;/li&gt;
-  &lt;li&gt;A &lt;a href=&quot;https://github.com/alibaba/GraphScope/blob/main/scripts/deploy_local.sh&quot;&gt;script&lt;/a&gt; supporting local deployment on MacOS, Ubuntu and CentOS.
-​&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Lazy evaluation support for graph interactive engine and graph learning engine.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;​&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;A &lt;a href=&quot;https://github.com/alibaba/GraphScope/blob/main/scripts/deploy_local.sh&quot;&gt;script&lt;/a&gt; supporting local deployment on MacOS, Ubuntu and CentOS.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;​&lt;/p&gt;
+&lt;ol&gt;
   &lt;li&gt;
     &lt;p&gt;Add more graph analytics algorithms as built-in applications.&lt;/p&gt;
 
