@@ -5,14 +5,14 @@
     <description>graphscope blog</description>
     <link>https://graphscope.io/blog/</link>
     <atom:link href="https://graphscope.io/blog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 02 Aug 2021 04:03:48 +0000</pubDate>
-    <lastBuildDate>Mon, 02 Aug 2021 04:03:48 +0000</lastBuildDate>
+    <pubDate>Mon, 02 Aug 2021 06:02:56 +0000</pubDate>
+    <lastBuildDate>Mon, 02 Aug 2021 06:02:56 +0000</lastBuildDate>
     <generator>Jekyll v4.2.0</generator>
     
       <item>
         <title>Release Notes: v0.6.0</title>
         <description>&lt;p&gt;&lt;img src=&quot;/blog/assets/images/release_note_t.png&quot; alt=&quot;release-note&quot; /&gt;
-We are glad to announce the release of GraphScope 0.6. This major release integrates a new graph interactive engine GAIA, which supports efficient parallel execution and bounded-memory execution for gremlin queries. More technical details of GAIA can refer to our published &lt;a href=&quot;https://www.usenix.org/system/files/nsdi21-qian.pdf&quot;&gt;NSDI paper&lt;/a&gt;. Note that currently the integration of GAIA with GraphScope is experimental, and is not recommended for production use (yet)! In addition, this release improves the experience of local deployment on MacOS, Ubuntu and CentOS, and adds more graph analytics algorithms.&lt;/p&gt;
+We are glad to announce the release of GraphScope 0.6. This major release integrates a new graph interactive engine GAIA, which supports efficient parallel execution and bounded-memory execution for gremlin queries. More technical details of GAIA can refer to our published &lt;a href=&quot;https://www.usenix.org/system/files/nsdi21-qian.pdf&quot;&gt;NSDI paper&lt;/a&gt;. Note that currently the integration of GAIA with GraphScope is experimental, and is not recommended for production use yet! In addition, this release improves the experience of local deployment on MacOS, Ubuntu and CentOS, and adds more graph analytics algorithms.&lt;/p&gt;
 
 &lt;p&gt;We highlight the following improvements included in this release:&lt;/p&gt;
 
