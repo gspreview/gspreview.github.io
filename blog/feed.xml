@@ -5,8 +5,8 @@
     <description>graphscope blog</description>
     <link>https://graphscope.io/blog/</link>
     <atom:link href="https://graphscope.io/blog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 02 Aug 2021 03:08:00 +0000</pubDate>
-    <lastBuildDate>Mon, 02 Aug 2021 03:08:00 +0000</lastBuildDate>
+    <pubDate>Mon, 02 Aug 2021 03:25:10 +0000</pubDate>
+    <lastBuildDate>Mon, 02 Aug 2021 03:25:10 +0000</lastBuildDate>
     <generator>Jekyll v4.2.0</generator>
     
       <item>
@@ -17,9 +17,7 @@ We are glad to announce the release of GraphScope 0.6. This major release integr
 &lt;p&gt;We highlight the following improvements included in this release:&lt;/p&gt;
 
 &lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;[Experimental] Integrate GAIA, a graph interactive query, into GraphScope. Currently, it has supported the following features/functions:&lt;/p&gt;
-
+  &lt;li&gt;[Experimental] Integrate GAIA, a graph interactive query, into GraphScope. Currently, it has supported the following features/functions:
     &lt;ul&gt;
       &lt;li&gt;Support efficient and scalable gremlin query with commonly used gremlin steps, including nested traversal;&lt;/li&gt;
       &lt;li&gt;Support advanced optimizations such as bounded-memory execution and early stop;&lt;/li&gt;
@@ -29,18 +27,10 @@ We are glad to announce the release of GraphScope 0.6. This major release integr
   &lt;li&gt;
     &lt;p&gt;Lazy evaluation support for graph interactive engine and graph learning engine.&lt;/p&gt;
   &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;​&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;A &lt;a href=&quot;https://github.com/alibaba/GraphScope/blob/main/scripts/deploy_local.sh&quot;&gt;script&lt;/a&gt; supporting local deployment on MacOS, Ubuntu and CentOS.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;​&lt;/p&gt;
-&lt;ol&gt;
   &lt;li&gt;
-    &lt;p&gt;Add more graph analytics algorithms as built-in applications.&lt;/p&gt;
-
+    &lt;p&gt;A &lt;a href=&quot;https://github.com/alibaba/GraphScope/blob/main/scripts/deploy_local.sh&quot;&gt;script&lt;/a&gt; supporting local deployment on MacOS, Ubuntu and CentOS.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Add more graph analytics algorithms as built-in applications.
     &lt;ul&gt;
       &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;node_boundary&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;edge_boundary&lt;/code&gt; applications&lt;/li&gt;
       &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pagerank&lt;/code&gt; in NetworkX version&lt;/li&gt;
