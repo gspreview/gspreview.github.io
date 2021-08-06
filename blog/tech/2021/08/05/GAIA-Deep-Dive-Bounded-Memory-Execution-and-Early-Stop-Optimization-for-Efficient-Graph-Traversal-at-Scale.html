@@ -91,7 +91,7 @@
 
 <p>Traversing all candidate paths fully is often unnecessary, especially for interactive queries with dynamic conditions running on diverse input graphs. For example, in the above query, only the first <code class="language-plaintext highlighter-rouge">k</code> results are needed. This leads to an interesting tradeoff between parallel traversal and wasted computation, as further illustrated in the following figure.</p>
 
-<p><img src="/blog/assets/images/early_stop_case.png" alt="early_stop_case.png" height="50%" width="50%" /></p>
+<p><img src="/blog/assets/images/early_stop_case.jpg" alt="early_stop_case.png" height="50%" width="50%" /></p>
 
 <p>The figure shows an example run of the query with <code class="language-plaintext highlighter-rouge">k=1</code>. The circle denotes the traversal specified by the <code class="language-plaintext highlighter-rouge">repeat</code>-loop. Assume we have enough computation resource (CPU cores), the paths can be explored in a fully parallel fashion. However, once a <code class="language-plaintext highlighter-rouge">4</code>-hop path is found, all the remaining parallel traversal will be no longer required.</p>
 

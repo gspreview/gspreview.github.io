@@ -5,8 +5,8 @@
     <description>graphscope blog</description>
     <link>https://graphscope.io/blog/</link>
     <atom:link href="https://graphscope.io/blog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 06 Aug 2021 11:54:21 +0000</pubDate>
-    <lastBuildDate>Fri, 06 Aug 2021 11:54:21 +0000</lastBuildDate>
+    <pubDate>Fri, 06 Aug 2021 12:12:01 +0000</pubDate>
+    <lastBuildDate>Fri, 06 Aug 2021 12:12:01 +0000</lastBuildDate>
     <generator>Jekyll v4.2.0</generator>
     
       <item>
@@ -44,7 +44,7 @@
 
 &lt;p&gt;Traversing all candidate paths fully is often unnecessary, especially for interactive queries with dynamic conditions running on diverse input graphs. For example, in the above query, only the first &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;k&lt;/code&gt; results are needed. This leads to an interesting tradeoff between parallel traversal and wasted computation, as further illustrated in the following figure.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/blog/assets/images/early_stop_case.png&quot; alt=&quot;early_stop_case.png&quot; height=&quot;50%&quot; width=&quot;50%&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/blog/assets/images/early_stop_case.jpg&quot; alt=&quot;early_stop_case.png&quot; height=&quot;50%&quot; width=&quot;50%&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;The figure shows an example run of the query with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;k=1&lt;/code&gt;. The circle denotes the traversal specified by the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;repeat&lt;/code&gt;-loop. Assume we have enough computation resource (CPU cores), the paths can be explored in a fully parallel fashion. However, once a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;4&lt;/code&gt;-hop path is found, all the remaining parallel traversal will be no longer required.&lt;/p&gt;
 
