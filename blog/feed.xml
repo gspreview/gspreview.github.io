@@ -5,8 +5,8 @@
     <description>graphscope blog</description>
     <link>https://graphscope.io/blog/</link>
     <atom:link href="https://graphscope.io/blog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 09 Aug 2021 02:09:32 +0000</pubDate>
-    <lastBuildDate>Mon, 09 Aug 2021 02:09:32 +0000</lastBuildDate>
+    <pubDate>Mon, 09 Aug 2021 02:16:54 +0000</pubDate>
+    <lastBuildDate>Mon, 09 Aug 2021 02:16:54 +0000</lastBuildDate>
     <generator>Jekyll v4.2.0</generator>
     
       <item>
@@ -34,9 +34,9 @@ We are glad to announce the release of GraphScope 0.6. This major release integr
   &lt;/li&gt;
   &lt;li&gt;Add more graph analytics algorithms as built-in applications.
     &lt;ul&gt;
-      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;node_boundary&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;edge_boundary&lt;/code&gt; applications&lt;/li&gt;
-      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pagerank&lt;/code&gt; in NetworkX version&lt;/li&gt;
-      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;is_simple_path&lt;/code&gt; application&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://networkx.org/documentation/stable/reference/algorithms/generated/networkx.algorithms.boundary.node_boundary.html#networkx.algorithms.boundary.node_boundary&quot;&gt;node_boundary&lt;/a&gt; and &lt;a href=&quot;https://networkx.org/documentation/stable/reference/algorithms/generated/networkx.algorithms.boundary.edge_boundary.html#networkx.algorithms.boundary.edge_boundary&quot;&gt;edge_boundary&lt;/a&gt; applications;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://networkx.org/documentation/stable/reference/algorithms/generated/networkx.algorithms.link_analysis.pagerank_alg.pagerank.html#networkx.algorithms.link_analysis.pagerank_alg.pagerank&quot;&gt;pagerank&lt;/a&gt; in NetworkX version;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://networkx.org/documentation/stable/reference/algorithms/generated/networkx.algorithms.simple_paths.is_simple_path.html#networkx.algorithms.simple_paths.is_simple_path&quot;&gt;is_simple_path&lt;/a&gt; application.&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
 &lt;/ol&gt;
