@@ -5,8 +5,8 @@
     <description>graphscope blog</description>
     <link>https://graphscope.io/blog/</link>
     <atom:link href="https://graphscope.io/blog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 09 Sep 2021 03:25:31 +0000</pubDate>
-    <lastBuildDate>Thu, 09 Sep 2021 03:25:31 +0000</lastBuildDate>
+    <pubDate>Thu, 09 Sep 2021 03:34:28 +0000</pubDate>
+    <lastBuildDate>Thu, 09 Sep 2021 03:34:28 +0000</lastBuildDate>
     <generator>Jekyll v4.2.0</generator>
     
       <item>
@@ -50,9 +50,9 @@ We are glad to announce the availability of GraphScope v0.7. This release includ
     &lt;ul&gt;
       &lt;li&gt;Remove GIE GraphManager role;&lt;/li&gt;
       &lt;li&gt;Remove zookeeper and replace with zetcd;&lt;/li&gt;
-      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;k8s_gie_graph_manager_image&lt;/code&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;k8s_gie_graph_manager_cpu&lt;/code&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;k8s_gie_graph_manager_mem&lt;/code&gt; Deprecated;&lt;/li&gt;
-      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;k8s_zookeeper_image&lt;/code&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;k8s_zookeeper_cpu&lt;/code&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;k8s_zookeeper_mem&lt;/code&gt; Deprecated;&lt;/li&gt;
-      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;k8s_gie_gremlin_server_cpu&lt;/code&gt; k8s_gie_gremlin_server_mem` Deprecated.&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;k8s_gie_graph_manager_image&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;k8s_gie_graph_manager_cpu&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;k8s_gie_graph_manager_mem&lt;/code&gt; Deprecated;&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;k8s_zookeeper_image&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;k8s_zookeeper_cpu&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;k8s_zookeeper_mem&lt;/code&gt; Deprecated;&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;k8s_gie_gremlin_server_cpu&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;k8s_gie_gremlin_server_mem&lt;/code&gt; Deprecated.&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
 &lt;/ol&gt;
