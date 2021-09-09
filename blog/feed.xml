@@ -5,9 +5,68 @@
     <description>graphscope blog</description>
     <link>https://graphscope.io/blog/</link>
     <atom:link href="https://graphscope.io/blog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 09 Aug 2021 02:16:54 +0000</pubDate>
-    <lastBuildDate>Mon, 09 Aug 2021 02:16:54 +0000</lastBuildDate>
+    <pubDate>Thu, 09 Sep 2021 03:25:31 +0000</pubDate>
+    <lastBuildDate>Thu, 09 Sep 2021 03:25:31 +0000</lastBuildDate>
     <generator>Jekyll v4.2.0</generator>
+    
+      <item>
+        <title>Release Notes: v0.7.0</title>
+        <description>&lt;p&gt;&lt;img src=&quot;/blog/assets/images/release_note_t.png&quot; alt=&quot;release-note&quot; /&gt;
+We are glad to announce the availability of GraphScope v0.7. This release includes major updates for the persistent graph store in GraphScope, providing APIs for real-time graph updates (inserts and deletes of individual vertices and edges). It also focuses on user-friendly improvements, security issues, code quality, and a series of bug fixes.&lt;/p&gt;
+
+&lt;p&gt;We highlight the following improvements included in this release:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Apart from bulk loading, this release introduces a set of APIs for real-time graph updates. Currently, these APIs have supported the following functions:
+    &lt;ul&gt;
+      &lt;li&gt;Insert/delete one or multiple vertices/edges;&lt;/li&gt;
+      &lt;li&gt;Update properties of a specific vertex/edge.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;More details can refer to &lt;a href=&quot;https://github.com/alibaba/GraphScope/blob/main/docs/persistent_graph_store.rst#realtime-write&quot;&gt;this&lt;/a&gt;.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;User-friendly improvement
+    &lt;ul&gt;
+      &lt;li&gt;Revise error handling in GraphScope and improve all error messages reported to users;&lt;/li&gt;
+      &lt;li&gt;Add a &lt;a href=&quot;https://github.com/alibaba/GraphScope/blob/main/docs/persistent_graph_store.rst&quot;&gt;document&lt;/a&gt; to describe persistent graph store in GraphScope;&lt;/li&gt;
+      &lt;li&gt;The logs in the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;err&lt;/code&gt; channel are always fetched to the client for debugging;&lt;/li&gt;
+      &lt;li&gt;The &lt;a href=&quot;https://github.com/alibaba/GraphScope/releases/download/v0.7.0/graphscope_store_data_load.tar.gz&quot;&gt;bulk-loading tool&lt;/a&gt; of the persistent graph store is released to help load graphs into the store;&lt;/li&gt;
+      &lt;li&gt;Revise some descriptions for APIs in documents.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Optimizations and enhancements
+    &lt;ul&gt;
+      &lt;li&gt;Using &lt;a href=&quot;https://github.com/etcd-io/zetcd&quot;&gt;zetcd&lt;/a&gt; to replace zookeeper in the graph interactive engine;&lt;/li&gt;
+      &lt;li&gt;Update third-party dependencies to address some security issues;&lt;/li&gt;
+      &lt;li&gt;More test coverages for GAIA and client;&lt;/li&gt;
+      &lt;li&gt;Integrate GIE GraphManager into Coordinator;&lt;/li&gt;
+      &lt;li&gt;During &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sess.gremlin&lt;/code&gt;, the pod will not be created dynamically for reducing the response time.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Some Breaking API Changes:
+    &lt;ul&gt;
+      &lt;li&gt;Remove GIE GraphManager role;&lt;/li&gt;
+      &lt;li&gt;Remove zookeeper and replace with zetcd;&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;k8s_gie_graph_manager_image&lt;/code&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;k8s_gie_graph_manager_cpu&lt;/code&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;k8s_gie_graph_manager_mem&lt;/code&gt; Deprecated;&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;k8s_zookeeper_image&lt;/code&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;k8s_zookeeper_cpu&lt;/code&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;k8s_zookeeper_mem&lt;/code&gt; Deprecated;&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;k8s_gie_gremlin_server_cpu&lt;/code&gt; k8s_gie_gremlin_server_mem` Deprecated.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;For more detailed improvements that have been made in this release, please refer to the complete &lt;a href=&quot;https://github.com/alibaba/GraphScope/releases/tag/v0.7.0&quot;&gt;changelog&lt;/a&gt;.&lt;/p&gt;
+</description>
+        <pubDate>Wed, 08 Sep 2021 03:33:20 +0000</pubDate>
+        <link>https://graphscope.io/blog/releasenotes/2021/09/08/release-notes-0.7.0.html</link>
+        <guid isPermaLink="true">https://graphscope.io/blog/releasenotes/2021/09/08/release-notes-0.7.0.html</guid>
+        
+        
+        <category>ReleaseNotes</category>
+        
+      </item>
     
       <item>
         <title>Release Notes: v0.6.0</title>
@@ -640,71 +699,6 @@ Today we released &lt;a href=&quot;https://github.com/alibaba/GraphScope/release
         
         
         <category>Newsroom</category>
-        
-      </item>
-    
-      <item>
-        <title>Release Notes: v0.2.0</title>
-        <description>&lt;p&gt;&lt;img src=&quot;/blog/assets/images/release_note_t.png&quot; alt=&quot;release-note&quot; /&gt;
-The GraphScope team is pleased to announce the 0.2.0 release after two-months development.
-The 0.2.0 release is focused on better getting started experience for end-users and we have
-make a lot of improvements since the last minor release. We have improved our documentation
-a lot, and made the kubernetes integration work for more settings. We have also brought the
-support for various I/O to make GraphScope suitable for more production environments.&lt;/p&gt;
-
-&lt;p&gt;Along with the 0.2.0 release we also bring &lt;a href=&quot;https://try.graphscope.app&quot;&gt;GraphScope Playground&lt;/a&gt; to users
-for getting started with GraphScope easier.&lt;/p&gt;
-
-&lt;p&gt;We highlights the following improvements included in this releases:&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;Better Kubernetes integration.&lt;/p&gt;
-
-    &lt;ul&gt;
-      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;LoadBalancer&lt;/code&gt; service type has been supported in this release, which brings GraphScope to
-vendored could environments like Alibabacloud, AWS and Azure.&lt;/li&gt;
-      &lt;li&gt;A &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;volumes&lt;/code&gt; parameter has been added to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;graphscope.session()&lt;/code&gt; to allow users mount their
-volumes (host path, or cloud volumes, etc.) to worker pods for input graph data and retrieve
-results.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Enhancement for interactive query.&lt;/p&gt;
-
-    &lt;ul&gt;
-      &lt;li&gt;GraphScope v0.2.0 added a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;InteractiveQuery.traversal_source()&lt;/code&gt; method to allows an interative
-query seamlessly works with the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gremlinpython&lt;/code&gt; SDK.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Better I/O and serialization support.&lt;/p&gt;
-
-    &lt;ul&gt;
-      &lt;li&gt;GraphScope v0.2.0 started to support various I/O, including Aliyun OSS, AWS S3, HDFS and other
-storage services that the filesystem-spec could support, for input datasets and result sink.&lt;/li&gt;
-      &lt;li&gt;GraphScope v0.2.0 added a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Graph.serialize()&lt;/code&gt; method to allow users serialize a graph to external
-storage and restore it back via &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Graph.deserailize()&lt;/code&gt;.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Bugfix for learning engine.&lt;/p&gt;
-
-    &lt;ul&gt;
-      &lt;li&gt;A bug in closing learning instance of a graph has been fixed along this release.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;For more detailed bugfixes and improvements that have been made in
-this version, please refer to the &lt;a href=&quot;https://github.com/alibaba/GraphScope/releases/tag/v0.2.0&quot;&gt;complete changelog&lt;/a&gt;.&lt;/p&gt;
-</description>
-        <pubDate>Mon, 01 Feb 2021 03:33:20 +0000</pubDate>
-        <link>https://graphscope.io/blog/releasenotes/2021/02/01/release-notes-0.2.0.html</link>
-        <guid isPermaLink="true">https://graphscope.io/blog/releasenotes/2021/02/01/release-notes-0.2.0.html</guid>
-        
-        
-        <category>ReleaseNotes</category>
         
       </item>
     
