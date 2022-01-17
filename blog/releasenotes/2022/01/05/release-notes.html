@@ -31,12 +31,12 @@
     <article class="post">
 
         <header class="post-header">
-            <h1 class="post-title">Release Notes: v0.4.0</h1>
+            <h1 class="post-title">Release Notes: v0.10.0</h1>
             <section class="post-meta">
                 
                 on ReleaseNotes
                 
-                <time class="post-date" datetime=" 2021-05-10">10 May 2021</time>
+                <time class="post-date" datetime=" 2022-01-05">05 Jan 2022</time>
             </section>
         </header>
 
@@ -49,44 +49,30 @@
         </header> -->
 
         <!-- <span class="post-meta">
-            <time datetime="2021-05-10">10 May 2021</time>
+            <time datetime="2022-01-05">05 Jan 2022</time>
             
                 on ReleaseNotes
             
         </span> -->
 
-        <!-- <h1 class="post-title">Release Notes: v0.4.0</h1> -->
+        <!-- <h1 class="post-title">Release Notes: v0.10.0</h1> -->
 
         <section class="post-content">
             <p><img src="/blog/assets/images/release_note_t.png" alt="release-note" />
-Today, we’re announcing the availability of GraphScope v0.4.0. This release focuses on
- the compatibility improvement with <a href="https://networkx.org/">NetworkX</a>, with the aim of allowing users to
- develop graph applications on large-scale graphs in a distributed environment just
- like doing this on a single machine. In addition, this release improves the
- experience of standalone deployment.</p>
+We are glad to announce the availability of GraphScope v0.10. This release supports users to run GraphScope on MacOS powered by Apple’s new M1 chip. In addition, it allows to serialize/deserialize graph data to/from the disk under the standalone mode.</p>
 
 <p>We highlight the following improvements included in this release:</p>
 
-<ol>
-  <li>
-    <p>Improved compatibility with NetworkX:</p>
+<ul>
+  <li>Add Apple’s M1 chip support.</li>
+  <li>Improve the implementation and documentation of context selectors.</li>
+  <li>Support serialization/deserialization of graph data on the standalone mode.</li>
+  <li>Refactor <a href="https://github.com/alibaba/GraphScope/tree/main/analytical_engine/java">Java SDK</a> in Graph Analytics Engine.</li>
+  <li>Fix a bug when loading graph data from HDFS.</li>
+  <li>Fix got empty result in <code class="language-plaintext highlighter-rouge">all_simple_path</code>algorithm with <code class="language-plaintext highlighter-rouge">num_workers=1</code>.</li>
+</ul>
 
-    <ul>
-      <li>Support <code class="language-plaintext highlighter-rouge">Graph/DiGraph</code> types in NetworkX;</li>
-      <li>Support Networkx APIs of operations and manipulations over the above two types of graphs;</li>
-      <li>A new <a href="https://github.com/alibaba/GraphScope/blob/62b3bbff00767784d0bb3693fe9bb24e8a1b4b2a/tutorials/2_graph_manipulations_with_networkx_compatible_apis.ipynb">tutorial</a> in Playground to introduce graph processing with NetworkX APIs.</li>
-    </ul>
-  </li>
-  <li>
-    <p>Improve the experience of standalone deployment:</p>
-
-    <ul>
-      <li>Support to launch multiple sessions/instances in standalone mode.</li>
-    </ul>
-  </li>
-</ol>
-
-<p>For more detailed improvements that have been made in this release, please refer to the complete <a href="https://github.com/alibaba/GraphScope/releases/tag/v0.4.0">changelog</a>.</p>
+<p>For more detailed improvements that have been made in this release, please refer to the complete <a href="https://github.com/alibaba/GraphScope/releases/tag/v0.10.0">changelog</a>.</p>
 
         </section>
 
@@ -112,15 +98,15 @@ Today, we’re announcing the availability of GraphScope v0.4.0. This release fo
         <!-- Share links section -->
         <!-- <section class="share">
     <h4>Share this post</h4>
-    <a class="icon-twitter" href="http://twitter.com/share?text=Release Notes: v0.4.0&amp;url=https://graphscope.io/releasenotes/2021/05/10/release-notes-0.4.0.html"
+    <a class="icon-twitter" href="http://twitter.com/share?text=Release Notes: v0.10.0&amp;url=https://graphscope.io/releasenotes/2022/01/05/release-notes.html"
         onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
         <span class="hidden">Twitter</span>
     </a>
-    <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://graphscope.io/releasenotes/2021/05/10/release-notes-0.4.0.html"
+    <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://graphscope.io/releasenotes/2022/01/05/release-notes.html"
         onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
         <span class="hidden">Facebook</span>
     </a>
-    <a class="icon-google-plus" href="https://plus.google.com/share?url=https://graphscope.io/releasenotes/2021/05/10/release-notes-0.4.0.html"
+    <a class="icon-google-plus" href="https://plus.google.com/share?url=https://graphscope.io/releasenotes/2022/01/05/release-notes.html"
        onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
         <span class="hidden">Google+</span>
     </a>

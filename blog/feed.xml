@@ -5,9 +5,36 @@
     <description>graphscope blog</description>
     <link>https://graphscope.io/blog/</link>
     <atom:link href="https://graphscope.io/blog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 21 Dec 2021 08:25:34 +0000</pubDate>
-    <lastBuildDate>Tue, 21 Dec 2021 08:25:34 +0000</lastBuildDate>
+    <pubDate>Mon, 17 Jan 2022 01:59:35 +0000</pubDate>
+    <lastBuildDate>Mon, 17 Jan 2022 01:59:35 +0000</lastBuildDate>
     <generator>Jekyll v4.2.1</generator>
+    
+      <item>
+        <title>Release Notes: v0.10.0</title>
+        <description>&lt;p&gt;&lt;img src=&quot;/blog/assets/images/release_note_t.png&quot; alt=&quot;release-note&quot; /&gt;
+We are glad to announce the availability of GraphScope v0.10. This release supports users to run GraphScope on MacOS powered by Apple’s new M1 chip. In addition, it allows to serialize/deserialize graph data to/from the disk under the standalone mode.&lt;/p&gt;
+
+&lt;p&gt;We highlight the following improvements included in this release:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Add Apple’s M1 chip support.&lt;/li&gt;
+  &lt;li&gt;Improve the implementation and documentation of context selectors.&lt;/li&gt;
+  &lt;li&gt;Support serialization/deserialization of graph data on the standalone mode.&lt;/li&gt;
+  &lt;li&gt;Refactor &lt;a href=&quot;https://github.com/alibaba/GraphScope/tree/main/analytical_engine/java&quot;&gt;Java SDK&lt;/a&gt; in Graph Analytics Engine.&lt;/li&gt;
+  &lt;li&gt;Fix a bug when loading graph data from HDFS.&lt;/li&gt;
+  &lt;li&gt;Fix got empty result in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;all_simple_path&lt;/code&gt;algorithm with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;num_workers=1&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;For more detailed improvements that have been made in this release, please refer to the complete &lt;a href=&quot;https://github.com/alibaba/GraphScope/releases/tag/v0.10.0&quot;&gt;changelog&lt;/a&gt;.&lt;/p&gt;
+</description>
+        <pubDate>Wed, 05 Jan 2022 03:33:20 +0000</pubDate>
+        <link>https://graphscope.io/blog/releasenotes/2022/01/05/release-notes.html</link>
+        <guid isPermaLink="true">https://graphscope.io/blog/releasenotes/2022/01/05/release-notes.html</guid>
+        
+        
+        <category>ReleaseNotes</category>
+        
+      </item>
     
       <item>
         <title>Release Notes: v0.9.0</title>
@@ -485,60 +512,6 @@ GAIA extends GraphScope with &lt;a href=&quot;https://tinkerpop.apache.org/greml
         
         
         <category>Tech</category>
-        
-      </item>
-    
-      <item>
-        <title>Release Notes: v0.3.0</title>
-        <description>&lt;p&gt;&lt;img src=&quot;/blog/assets/images/release_note_t.png&quot; alt=&quot;release-note&quot; /&gt;
-GraphScope v0.3.0 is released as scheduled. This release includes new features and major updates for  frontend APIs for graph manipulation, integration with other systems as well as code optimization for some operators. Another direction we are working on is to ease the deployment of GraphScope with/without Kubernetes.&lt;/p&gt;
-
-&lt;p&gt;We highlight the following improvements included in this release:&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;Better integration with other systems&lt;/p&gt;
-
-    &lt;ul&gt;
-      &lt;li&gt;GraphScope aims to support easy integrations with other big data processing systems. As a first step, this release supported that the results (in the format of dataframe) of GraphScope can be further processed by Mars, a distributed tensor-based computation engine.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Performance and function enhancement&lt;/p&gt;
-
-    &lt;ul&gt;
-      &lt;li&gt;Pre-compile a set of commonly used applications and graphs into the docker image to improve the response time of each operation in Python.&lt;/li&gt;
-      &lt;li&gt;Optimize the implementation of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;session.gremlin(...)&lt;/code&gt;and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;session.close()&lt;/code&gt;.&lt;/li&gt;
-      &lt;li&gt;Support Louvain algorithm as a built-in application in the graph analytics engine.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Improved graph manipulation APIs&lt;/p&gt;
-
-    &lt;ul&gt;
-      &lt;li&gt;Support for adding vertices and edges to an existing graph.&lt;/li&gt;
-      &lt;li&gt;Add a general project operator.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Easier deployment with/without Kubernetes.&lt;/p&gt;
-
-    &lt;ul&gt;
-      &lt;li&gt;GraphScope v0.3.0 provided a &lt;a href=&quot;https://github.com/alibaba/GraphScope/blob/main/scripts/launch_cluster.py&quot;&gt;script&lt;/a&gt; to deploy GraphScope on a Kubernetes cluster of AWS/aliyun.&lt;/li&gt;
-      &lt;li&gt;Support deployment with &lt;a href=&quot;https://artifacthub.io/packages/helm/graphscope/graphscope&quot;&gt;HELM&lt;/a&gt; and generalize &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;k8s_volumes&lt;/code&gt; to support PVC mount.&lt;/li&gt;
-      &lt;li&gt;This release started to support the deployment and running of GraphScope locally without Kubernetes.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;For more detailed improvements that have been made in this release, please refer to the complete &lt;a href=&quot;https://github.com/alibaba/GraphScope/releases/tag/v0.3.0&quot;&gt;changelog&lt;/a&gt;.&lt;/p&gt;
-</description>
-        <pubDate>Sun, 11 Apr 2021 03:33:20 +0000</pubDate>
-        <link>https://graphscope.io/blog/releasenotes/2021/04/11/release-notes-0.3.0.html</link>
-        <guid isPermaLink="true">https://graphscope.io/blog/releasenotes/2021/04/11/release-notes-0.3.0.html</guid>
-        
-        
-        <category>ReleaseNotes</category>
         
       </item>
     
