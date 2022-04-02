@@ -73,8 +73,8 @@ The GraphScope v0.12.0 release is a major update on many aspects of the project 
   </li>
   <li>Add Giraph APIs to GAE:
     <ul>
-      <li>Support to load graphs with Giraph formats, e.g., <code class="language-plaintext highlighter-rouge">graph = sess.load_from(vertices="p2p-31.v", vformat="giraph:com.example.vformat",edges="p2p-31.e", eformat="giraph:com.example.vformat")</code>.</li>
-      <li>Support Giraph APIs on GraphScope, and all apps implemented on top of the original Giraph APIs can run on GraphScope without modifications. For example, to use Giraph app SSSP in GraphScope, users can just invoke <code class="language-plaintext highlighter-rouge">giraph_sssp = load_app(algo="giraph:com.alibaba.graphscope.example.giraph.SSSP")</code>.</li>
+      <li>Support to load graphs with Giraph formats.</li>
+      <li>Support Giraph APIs on GraphScope, and all apps implemented on top of the original Giraph APIs can run on GraphScope without modifications.</li>
       <li>Users now can add jars with <code class="language-plaintext highlighter-rouge">sess.add_lib()</code> method.</li>
     </ul>
   </li>

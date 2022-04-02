@@ -5,8 +5,8 @@
     <description>graphscope blog</description>
     <link>https://graphscope.io/blog/</link>
     <atom:link href="https://graphscope.io/blog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 02 Apr 2022 08:51:29 +0000</pubDate>
-    <lastBuildDate>Sat, 02 Apr 2022 08:51:29 +0000</lastBuildDate>
+    <pubDate>Sat, 02 Apr 2022 09:00:22 +0000</pubDate>
+    <lastBuildDate>Sat, 02 Apr 2022 09:00:22 +0000</lastBuildDate>
     <generator>Jekyll v4.2.2</generator>
     
       <item>
@@ -26,8 +26,8 @@ The GraphScope v0.12.0 release is a major update on many aspects of the project 
   &lt;/li&gt;
   &lt;li&gt;Add Giraph APIs to GAE:
     &lt;ul&gt;
-      &lt;li&gt;Support to load graphs with Giraph formats, e.g., &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;graph = sess.load_from(vertices=&quot;p2p-31.v&quot;, vformat=&quot;giraph:com.example.vformat&quot;,edges=&quot;p2p-31.e&quot;, eformat=&quot;giraph:com.example.vformat&quot;)&lt;/code&gt;.&lt;/li&gt;
-      &lt;li&gt;Support Giraph APIs on GraphScope, and all apps implemented on top of the original Giraph APIs can run on GraphScope without modifications. For example, to use Giraph app SSSP in GraphScope, users can just invoke &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;giraph_sssp = load_app(algo=&quot;giraph:com.alibaba.graphscope.example.giraph.SSSP&quot;)&lt;/code&gt;.&lt;/li&gt;
+      &lt;li&gt;Support to load graphs with Giraph formats.&lt;/li&gt;
+      &lt;li&gt;Support Giraph APIs on GraphScope, and all apps implemented on top of the original Giraph APIs can run on GraphScope without modifications.&lt;/li&gt;
       &lt;li&gt;Users now can add jars with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sess.add_lib()&lt;/code&gt; method.&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
