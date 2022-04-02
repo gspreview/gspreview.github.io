@@ -5,9 +5,53 @@
     <description>graphscope blog</description>
     <link>https://graphscope.io/blog/</link>
     <atom:link href="https://graphscope.io/blog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 29 Mar 2022 08:39:27 +0000</pubDate>
-    <lastBuildDate>Tue, 29 Mar 2022 08:39:27 +0000</lastBuildDate>
+    <pubDate>Sat, 02 Apr 2022 08:51:29 +0000</pubDate>
+    <lastBuildDate>Sat, 02 Apr 2022 08:51:29 +0000</lastBuildDate>
     <generator>Jekyll v4.2.2</generator>
+    
+      <item>
+        <title>Release Notes: v0.12.0</title>
+        <description>&lt;p&gt;&lt;img src=&quot;/blog/assets/images/release_note_t.png&quot; alt=&quot;release-note&quot; /&gt;
+The GraphScope v0.12.0 release is a major update on many aspects of the project including backend engines, APIs, and system stability. It introduces an intermediate representation (IR) layer into the graph interactive engine (GIE) named GAIA, to decouple query languages from query execution engines. Meanwhile, this release supports Giraph APIs to allow Giraph apps directly running on the Graph Analytics Engine (GAE) of GraphScope.&lt;/p&gt;
+
+&lt;p&gt;We highlight the following improvements included in this release:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Introduce an IR layer into GAIA:
+    &lt;ul&gt;
+      &lt;li&gt;A completely redesigned IR layer to decouple the query language dependency, and further for query optimizations.&lt;/li&gt;
+      &lt;li&gt;Define the supported Gremlin’s grammar via Antlr.&lt;/li&gt;
+      &lt;li&gt;Support &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;match()&lt;/code&gt;-step in Gremlin, for graph pattern matching.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Add Giraph APIs to GAE:
+    &lt;ul&gt;
+      &lt;li&gt;Support to load graphs with Giraph formats, e.g., &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;graph = sess.load_from(vertices=&quot;p2p-31.v&quot;, vformat=&quot;giraph:com.example.vformat&quot;,edges=&quot;p2p-31.e&quot;, eformat=&quot;giraph:com.example.vformat&quot;)&lt;/code&gt;.&lt;/li&gt;
+      &lt;li&gt;Support Giraph APIs on GraphScope, and all apps implemented on top of the original Giraph APIs can run on GraphScope without modifications. For example, to use Giraph app SSSP in GraphScope, users can just invoke &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;giraph_sssp = load_app(algo=&quot;giraph:com.alibaba.graphscope.example.giraph.SSSP&quot;)&lt;/code&gt;.&lt;/li&gt;
+      &lt;li&gt;Users now can add jars with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sess.add_lib()&lt;/code&gt; method.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Bug fixes and other enhancements:
+    &lt;ul&gt;
+      &lt;li&gt;Correct the lifecycle management of loaded graphs within a session.&lt;/li&gt;
+      &lt;li&gt;Make the logs of Graph Learning Engine (GLE) more user-friendly.&lt;/li&gt;
+      &lt;li&gt;Fix readwrite failed on &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;graphscope.nx&lt;/code&gt;.&lt;/li&gt;
+      &lt;li&gt;Support to connect to an existing ETCD cluster in GraphScope.&lt;/li&gt;
+      &lt;li&gt;Support to launch GraphScope on K8s from an inner-pod environment.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;For more detailed improvements that have been made in this release, please refer to the complete &lt;a href=&quot;https://github.com/alibaba/GraphScope/releases/tag/v0.12.0&quot;&gt;changelog&lt;/a&gt;.&lt;/p&gt;
+</description>
+        <pubDate>Sat, 02 Apr 2022 03:33:20 +0000</pubDate>
+        <link>https://graphscope.io/blog/releasenotes/2022/04/02/release-notes-0.12.0.html</link>
+        <guid isPermaLink="true">https://graphscope.io/blog/releasenotes/2022/04/02/release-notes-0.12.0.html</guid>
+        
+        
+        <category>ReleaseNotes</category>
+        
+      </item>
     
       <item>
         <title>Release Notes: v0.11.0</title>
@@ -41,8 +85,8 @@ We are glad to announce a number of new features and improvements to GraphScope,
 &lt;p&gt;For more detailed improvements that have been made in this release, please refer to the complete &lt;a href=&quot;https://github.com/alibaba/GraphScope/releases/tag/v0.11.0&quot;&gt;changelog&lt;/a&gt;.&lt;/p&gt;
 </description>
         <pubDate>Sun, 06 Mar 2022 03:33:20 +0000</pubDate>
-        <link>https://graphscope.io/blog/releasenotes/2022/03/06/release-notes.html</link>
-        <guid isPermaLink="true">https://graphscope.io/blog/releasenotes/2022/03/06/release-notes.html</guid>
+        <link>https://graphscope.io/blog/releasenotes/2022/03/06/release-notes-0.11.0.html</link>
+        <guid isPermaLink="true">https://graphscope.io/blog/releasenotes/2022/03/06/release-notes-0.11.0.html</guid>
         
         
         <category>ReleaseNotes</category>
@@ -68,8 +112,8 @@ We are glad to announce the availability of GraphScope v0.10. This release suppo
 &lt;p&gt;For more detailed improvements that have been made in this release, please refer to the complete &lt;a href=&quot;https://github.com/alibaba/GraphScope/releases/tag/v0.10.0&quot;&gt;changelog&lt;/a&gt;.&lt;/p&gt;
 </description>
         <pubDate>Wed, 05 Jan 2022 03:33:20 +0000</pubDate>
-        <link>https://graphscope.io/blog/releasenotes/2022/01/05/release-notes.html</link>
-        <guid isPermaLink="true">https://graphscope.io/blog/releasenotes/2022/01/05/release-notes.html</guid>
+        <link>https://graphscope.io/blog/releasenotes/2022/01/05/release-notes-0.10.0.html</link>
+        <guid isPermaLink="true">https://graphscope.io/blog/releasenotes/2022/01/05/release-notes-0.10.0.html</guid>
         
         
         <category>ReleaseNotes</category>
@@ -436,47 +480,6 @@ In this post, we will present a high-level road-map of the GraphScope project wi
         
         
         <category>Tech</category>
-        
-      </item>
-    
-      <item>
-        <title>Release Notes: v0.4.0</title>
-        <description>&lt;p&gt;&lt;img src=&quot;/blog/assets/images/release_note_t.png&quot; alt=&quot;release-note&quot; /&gt;
-Today, we’re announcing the availability of GraphScope v0.4.0. This release focuses on
- the compatibility improvement with &lt;a href=&quot;https://networkx.org/&quot;&gt;NetworkX&lt;/a&gt;, with the aim of allowing users to
- develop graph applications on large-scale graphs in a distributed environment just
- like doing this on a single machine. In addition, this release improves the
- experience of standalone deployment.&lt;/p&gt;
-
-&lt;p&gt;We highlight the following improvements included in this release:&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;Improved compatibility with NetworkX:&lt;/p&gt;
-
-    &lt;ul&gt;
-      &lt;li&gt;Support &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Graph/DiGraph&lt;/code&gt; types in NetworkX;&lt;/li&gt;
-      &lt;li&gt;Support Networkx APIs of operations and manipulations over the above two types of graphs;&lt;/li&gt;
-      &lt;li&gt;A new &lt;a href=&quot;https://github.com/alibaba/GraphScope/blob/62b3bbff00767784d0bb3693fe9bb24e8a1b4b2a/tutorials/2_graph_manipulations_with_networkx_compatible_apis.ipynb&quot;&gt;tutorial&lt;/a&gt; in Playground to introduce graph processing with NetworkX APIs.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Improve the experience of standalone deployment:&lt;/p&gt;
-
-    &lt;ul&gt;
-      &lt;li&gt;Support to launch multiple sessions/instances in standalone mode.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;For more detailed improvements that have been made in this release, please refer to the complete &lt;a href=&quot;https://github.com/alibaba/GraphScope/releases/tag/v0.4.0&quot;&gt;changelog&lt;/a&gt;.&lt;/p&gt;
-</description>
-        <pubDate>Mon, 10 May 2021 05:08:20 +0000</pubDate>
-        <link>https://graphscope.io/blog/releasenotes/2021/05/10/release-notes-0.4.0.html</link>
-        <guid isPermaLink="true">https://graphscope.io/blog/releasenotes/2021/05/10/release-notes-0.4.0.html</guid>
-        
-        
-        <category>ReleaseNotes</category>
         
       </item>
     
