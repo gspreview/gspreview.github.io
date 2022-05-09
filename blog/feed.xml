@@ -5,8 +5,8 @@
     <description>graphscope blog</description>
     <link>https://graphscope.io/blog/</link>
     <atom:link href="https://graphscope.io/blog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 09 May 2022 03:53:10 +0000</pubDate>
-    <lastBuildDate>Mon, 09 May 2022 03:53:10 +0000</lastBuildDate>
+    <pubDate>Mon, 09 May 2022 06:06:53 +0000</pubDate>
+    <lastBuildDate>Mon, 09 May 2022 06:06:53 +0000</lastBuildDate>
     <generator>Jekyll v4.2.2</generator>
     
       <item>
@@ -26,15 +26,15 @@ We are delighted to announce the release of GraphScope v0.13.0. This release is 
   &lt;/li&gt;
   &lt;li&gt;Performance improvement:
     &lt;ul&gt;
-      &lt;li&gt;Adding data caching mechanism in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;NetworkX&lt;/code&gt;to improve the performance;&lt;/li&gt;
-      &lt;li&gt;Optimizing the performance of converting&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;arrow_fragment&lt;/code&gt; to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dynamic_fragment&lt;/code&gt; with multi-thread.&lt;/li&gt;
+      &lt;li&gt;Adding data caching mechanism in the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;NetworkX&lt;/code&gt; module to improve the performance;&lt;/li&gt;
+      &lt;li&gt;Optimizing the performance of converting &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;arrow_fragment&lt;/code&gt; to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dynamic_fragment&lt;/code&gt; with multi-thread.&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;Bug Fixes or other enhancements:
+  &lt;li&gt;Bug fixes and other enhancements:
     &lt;ul&gt;
       &lt;li&gt;Fixing compilation failure in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cdlp&lt;/code&gt; with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;arrow_flatten_fragment&lt;/code&gt;;&lt;/li&gt;
       &lt;li&gt;Supporting primary key index in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Groot&lt;/code&gt;;&lt;/li&gt;
-      &lt;li&gt;Adding &lt;a href=&quot;https://networkx.org/documentation/stable/reference/algorithms/generated/networkx.algorithms.cluster.average_clustering.html&quot;&gt;average clustering&lt;/a&gt; as built-in applications;&lt;/li&gt;
+      &lt;li&gt;Adding &lt;a href=&quot;https://networkx.org/documentation/stable/reference/algorithms/generated/networkx.algorithms.cluster.average_clustering.html&quot;&gt;average clustering&lt;/a&gt; as built-in applications.&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
 &lt;/ol&gt;
