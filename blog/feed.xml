@@ -5,8 +5,8 @@
     <description>graphscope blog</description>
     <link>https://graphscope.io/blog/</link>
     <atom:link href="https://graphscope.io/blog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 09 May 2022 03:41:27 +0000</pubDate>
-    <lastBuildDate>Mon, 09 May 2022 03:41:27 +0000</lastBuildDate>
+    <pubDate>Mon, 09 May 2022 03:53:10 +0000</pubDate>
+    <lastBuildDate>Mon, 09 May 2022 03:53:10 +0000</lastBuildDate>
     <generator>Jekyll v4.2.2</generator>
     
       <item>
@@ -17,9 +17,7 @@ We are delighted to announce the release of GraphScope v0.13.0. This release is 
 &lt;p&gt;We highlight the following improvements included in this release:&lt;/p&gt;
 
 &lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;Introducing a JupyterLab extension for GraphScope. Currently, it supports the following functions:&lt;/p&gt;
-
+  &lt;li&gt;Introducing a JupyterLab extension for GraphScope. Currently, it supports the following functions:
     &lt;ul&gt;
       &lt;li&gt;Providing a graphical user interface for monitoring status of some variables (e.g., &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;session&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;graph&lt;/code&gt;) in your GraphScope program;&lt;/li&gt;
       &lt;li&gt;Supporting to define data schema and load graph data in an interactive way;&lt;/li&gt;
@@ -34,7 +32,7 @@ We are delighted to announce the release of GraphScope v0.13.0. This release is 
   &lt;/li&gt;
   &lt;li&gt;Bug Fixes or other enhancements:
     &lt;ul&gt;
-      &lt;li&gt;Fixing compilation failure in `	cdlp&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt; with &lt;/code&gt;arrow_flatten_fragment`;&lt;/li&gt;
+      &lt;li&gt;Fixing compilation failure in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cdlp&lt;/code&gt; with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;arrow_flatten_fragment&lt;/code&gt;;&lt;/li&gt;
       &lt;li&gt;Supporting primary key index in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Groot&lt;/code&gt;;&lt;/li&gt;
       &lt;li&gt;Adding &lt;a href=&quot;https://networkx.org/documentation/stable/reference/algorithms/generated/networkx.algorithms.cluster.average_clustering.html&quot;&gt;average clustering&lt;/a&gt; as built-in applications;&lt;/li&gt;
     &lt;/ul&gt;
