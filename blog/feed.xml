@@ -5,8 +5,8 @@
     <description>graphscope blog</description>
     <link>https://graphscope.io/blog/</link>
     <atom:link href="https://graphscope.io/blog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 09 May 2022 03:38:23 +0000</pubDate>
-    <lastBuildDate>Mon, 09 May 2022 03:38:23 +0000</lastBuildDate>
+    <pubDate>Mon, 09 May 2022 03:41:27 +0000</pubDate>
+    <lastBuildDate>Mon, 09 May 2022 03:41:27 +0000</lastBuildDate>
     <generator>Jekyll v4.2.2</generator>
     
       <item>
@@ -36,7 +36,7 @@ We are delighted to announce the release of GraphScope v0.13.0. This release is 
     &lt;ul&gt;
       &lt;li&gt;Fixing compilation failure in `	cdlp&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt; with &lt;/code&gt;arrow_flatten_fragment`;&lt;/li&gt;
       &lt;li&gt;Supporting primary key index in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Groot&lt;/code&gt;;&lt;/li&gt;
-      &lt;li&gt;Adding &lt;a href=&quot;[https://networkx.org/documentation/stable/reference/algorithms/generated/networkx.algorithms.cluster.average_clustering.html](https://networkx.org/documentation/stable/reference/algorithms/generated/networkx.algorithms.cluster.average_clustering.html)&quot;&gt;average clustering&lt;/a&gt; as builtin applications;&lt;/li&gt;
+      &lt;li&gt;Adding &lt;a href=&quot;https://networkx.org/documentation/stable/reference/algorithms/generated/networkx.algorithms.cluster.average_clustering.html&quot;&gt;average clustering&lt;/a&gt; as built-in applications;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
 &lt;/ol&gt;
