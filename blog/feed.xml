@@ -5,9 +5,50 @@
     <description>graphscope blog</description>
     <link>https://graphscope.io/blog/</link>
     <atom:link href="https://graphscope.io/blog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 09 May 2022 06:06:53 +0000</pubDate>
-    <lastBuildDate>Mon, 09 May 2022 06:06:53 +0000</lastBuildDate>
+    <pubDate>Fri, 10 Jun 2022 09:49:32 +0000</pubDate>
+    <lastBuildDate>Fri, 10 Jun 2022 09:49:32 +0000</lastBuildDate>
     <generator>Jekyll v4.2.2</generator>
+    
+      <item>
+        <title>Release Notes: v0.14.0</title>
+        <description>&lt;p&gt;&lt;img src=&quot;/blog/assets/images/release_note_t.png&quot; alt=&quot;release-note&quot; /&gt;
+We are delighted to present the release of GraphScope 0.14.0. This release is composed of many updates on backend engines and system stability. The new Graph Interactive Engine (GIE), &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;GAIA-IR&lt;/code&gt;, has supported more types of operators and graph schemas for diverse graph queries. Meanwhile, the persistent storage of GraphScope, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Groot&lt;/code&gt;, is further enhanced with a series of new functions. In addition, we continuously work on improving the performance of GraphScope, and developer usability.&lt;/p&gt;
+
+&lt;p&gt;We highlight the following improvements included in this release:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;New supported operators in GAIA-IR:
+    &lt;ul&gt;
+      &lt;li&gt;Support the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;valueMap&lt;/code&gt;operator in Gremlin;&lt;/li&gt;
+      &lt;li&gt;Enable the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;String&lt;/code&gt; type as vertex ID type in graph schemas;&lt;/li&gt;
+      &lt;li&gt;Support to directly access a vertex via primary key.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;More functions on persistent storage of GraphScope:
+    &lt;ul&gt;
+      &lt;li&gt;Support to load dataset from Aliyun OSS;&lt;/li&gt;
+      &lt;li&gt;Enable local GC for the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Groot&lt;/code&gt; storage.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Bug fixes and other enhancements:
+    &lt;ul&gt;
+      &lt;li&gt;Upgrade the NetworkX version from 2.6 to 2.8;&lt;/li&gt;
+      &lt;li&gt;A new algorithm named &lt;a href=&quot;[https://networkx.org/documentation/stable/reference/algorithms/generated/networkx.algorithms.centrality.voterank.html?highlight=voterank#networkx.algorithms.centrality.voterank](https://networkx.org/documentation/stable/reference/algorithms/generated/networkx.algorithms.centrality.voterank.html?highlight=voterank#networkx.algorithms.centrality.voterank)&quot;&gt;VoteRank&lt;/a&gt; has been supported in the graph analytics engine;&lt;/li&gt;
+      &lt;li&gt;Fix some bugs when installing dependencies for GraphScope.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;For more detailed improvements that have been made in this release, please refer to the complete &lt;a href=&quot;https://github.com/alibaba/GraphScope/releases/tag/v0.14.0&quot;&gt;changelog&lt;/a&gt;.&lt;/p&gt;
+</description>
+        <pubDate>Thu, 09 Jun 2022 03:33:20 +0000</pubDate>
+        <link>https://graphscope.io/blog/releasenotes/2022/06/09/release-notes-0.14.0.html</link>
+        <guid isPermaLink="true">https://graphscope.io/blog/releasenotes/2022/06/09/release-notes-0.14.0.html</guid>
+        
+        
+        <category>ReleaseNotes</category>
+        
+      </item>
     
       <item>
         <title>Release Notes: v0.13.0</title>
@@ -412,56 +453,6 @@ We are glad to announce the release of GraphScope 0.6. This major release integr
         
         
         <category>Tech</category>
-        
-      </item>
-    
-      <item>
-        <title>Release Notes: v0.5.0</title>
-        <description>&lt;p&gt;&lt;img src=&quot;/blog/assets/images/release_note_t.png&quot; alt=&quot;release-note&quot; /&gt;
-We are glad to announce the GraphScope 0.5 release. As the first step towards the ease of deployment in production, this major release includes two new features, namely &lt;strong&gt;a persistent graph store&lt;/strong&gt; to enable a “service mode” for real-time graph computing, and &lt;strong&gt;lazy evaluation&lt;/strong&gt; of GraphScope programs–an execution strategy which delays the execution of a GraphScope program until later when needed for efficiency. In addition, we improve the compatibility with NetworkX.
-​
-We highlight the following improvements included in this release:
-​&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;GraphScope-Store: A persistent store for mutable graphs. Currently, it has supported the following features/functions:&lt;/p&gt;
-
-    &lt;ul&gt;
-      &lt;li&gt;A bulk-load tool to import a property graph from files to the GraphScope-Store instance.&lt;/li&gt;
-      &lt;li&gt;Helm support to launch GraphScope as a service with a store.&lt;/li&gt;
-      &lt;li&gt;Support for multiple session connections to a store.&lt;/li&gt;
-      &lt;li&gt;Interactive queries on graphs in the store with Gremlin.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Lazy evaluation&lt;/p&gt;
-
-    &lt;ul&gt;
-      &lt;li&gt;Support to switch between lazy-mode and eager-mode by just setting the value of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mode&lt;/code&gt; as &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;lazy&lt;/code&gt; or &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;eager&lt;/code&gt; when creating a session &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;graphscope.session(mode='lazy'or 'eager')&lt;/code&gt;.&lt;/li&gt;
-      &lt;li&gt;Adapt the NetworkX interfaces to switch between eager and lazy modes.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Enhanced NetworkX compatibility&lt;/p&gt;
-
-    &lt;ul&gt;
-      &lt;li&gt;Support for multi-queries on duplications of the whole graph.&lt;/li&gt;
-      &lt;li&gt;Add all-pairs shortest paths and closeness centrality algorithms.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Provide a &lt;a href=&quot;https://graphscope.io/docs/frequently_asked_questions.html&quot;&gt;Q&amp;amp;A page&lt;/a&gt; for beginners&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;For more detailed improvements that have been made in this release, please refer to the complete &lt;a href=&quot;https://github.com/alibaba/GraphScope/releases/tag/v0.5.0&quot;&gt;changelog&lt;/a&gt;.&lt;/p&gt;
-</description>
-        <pubDate>Tue, 15 Jun 2021 03:33:20 +0000</pubDate>
-        <link>https://graphscope.io/blog/releasenotes/2021/06/15/release-notes-0.5.0.html</link>
-        <guid isPermaLink="true">https://graphscope.io/blog/releasenotes/2021/06/15/release-notes-0.5.0.html</guid>
-        
-        
-        <category>ReleaseNotes</category>
         
       </item>
     
