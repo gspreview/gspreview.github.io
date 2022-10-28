@@ -5,9 +5,45 @@
     <description>graphscope blog</description>
     <link>https://graphscope.io/blog/</link>
     <atom:link href="https://graphscope.io/blog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 25 Aug 2022 07:06:39 +0000</pubDate>
-    <lastBuildDate>Thu, 25 Aug 2022 07:06:39 +0000</lastBuildDate>
-    <generator>Jekyll v4.2.2</generator>
+    <pubDate>Fri, 28 Oct 2022 02:46:36 +0000</pubDate>
+    <lastBuildDate>Fri, 28 Oct 2022 02:46:36 +0000</lastBuildDate>
+    <generator>Jekyll v4.3.1</generator>
+    
+      <item>
+        <title>Release Notes: v0.17.0</title>
+        <description>&lt;p&gt;&lt;img src=&quot;/blog/assets/images/release_note_t.png&quot; alt=&quot;release-note&quot; /&gt;
+We are glad to announce a number of new features and improvements to GraphScope, alongside the GraphScope 0.17 release. The updates include new releases for Spark-GraphX support, backend engine enhancement, and frontend APIs. Currently, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;GraphX Pregel&lt;/code&gt; algorithms can be seamlessly executed on GraphScope. A lot of new features have also been officially brought into the interactive engine (GIE), including the syntactic sugar of path expansion and expression, the Gremlin steps of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;id()&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;label()&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;coin()&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;otherV()&lt;/code&gt;,  and the profiling and benchmarking tools for LDBC BI queries.&lt;/p&gt;
+
+&lt;p&gt;We highlight the following improvements included in this release:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Spark-GraphX support for GAE:
+    &lt;ul&gt;
+      &lt;li&gt;Support to convert GraphX graph to GraphScope Fragment;&lt;/li&gt;
+      &lt;li&gt;Support to wrap GraphScope Fragment as GraphX Graph;&lt;/li&gt;
+      &lt;li&gt;Support to run GraphX Pregel algorithms on GAE.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;New language features and enhancement for GIE:
+    &lt;ul&gt;
+      &lt;li&gt;The syntactic sugar of path expansion. Now user can write &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;out[in|both]('x..y', 'KNOWS')&lt;/code&gt; to support path expansion of at least &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;x&lt;/code&gt; (included) times and at most &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;y&lt;/code&gt; (excluded) times from a certain node. Meanwhile, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;with()&lt;/code&gt; step can be followed to configure the path expansion.&lt;/li&gt;
+      &lt;li&gt;The syntactic sugar of expression, introduced by &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;expr()&lt;/code&gt;, can be used along with the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;where()&lt;/code&gt;-step to enable filtering expression. For example, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.where(expr(&quot;@.name == \&quot;John\&quot;&quot;))&lt;/code&gt; helps filter out the current entry that has the name of “John”. We have updated the &lt;a href=&quot;https://graphscope.io/docs/interactive_engine.html&quot;&gt;README doc&lt;/a&gt; for some instructions.&lt;/li&gt;
+      &lt;li&gt;Provide LDBC benchmarking for BI queries.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Enhancement and dependency refinement of Groot to reduce the size of fat-jar.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;For more detailed improvements that have been made in this release, please refer to the complete &lt;a href=&quot;https://github.com/alibaba/GraphScope/releases/tag/v0.17.0&quot;&gt;changelog&lt;/a&gt;.&lt;/p&gt;
+</description>
+        <pubDate>Mon, 26 Sep 2022 03:33:20 +0000</pubDate>
+        <link>https://graphscope.io/blog/releasenotes/2022/09/26/release-notes-0.17.0.html</link>
+        <guid isPermaLink="true">https://graphscope.io/blog/releasenotes/2022/09/26/release-notes-0.17.0.html</guid>
+        
+        
+        <category>ReleaseNotes</category>
+        
+      </item>
     
       <item>
         <title>Release Notes: v0.16.0</title>
@@ -375,49 +411,6 @@ We are glad to announce the availability of GraphScope v0.7. This release includ
         <pubDate>Wed, 08 Sep 2021 03:33:20 +0000</pubDate>
         <link>https://graphscope.io/blog/releasenotes/2021/09/08/release-notes-0.7.0.html</link>
         <guid isPermaLink="true">https://graphscope.io/blog/releasenotes/2021/09/08/release-notes-0.7.0.html</guid>
-        
-        
-        <category>ReleaseNotes</category>
-        
-      </item>
-    
-      <item>
-        <title>Release Notes: v0.6.0</title>
-        <description>&lt;p&gt;&lt;img src=&quot;/blog/assets/images/release_note_t.png&quot; alt=&quot;release-note&quot; /&gt;
-We are glad to announce the release of GraphScope 0.6. This major release integrates a new graph interactive engine GAIA, which supports efficient parallel execution and bounded-memory execution for Gremlin queries. More technical details of GAIA can refer to our published &lt;a href=&quot;https://graphscope.io/blog/tech/2021/08/05/GAIA-Deep-Dive-Bounded-Memory-Execution-and-Early-Stop-Optimization-for-Efficient-Graph-Traversal-at-Scale.html&quot;&gt;tech blog&lt;/a&gt;. Note that currently the integration of GAIA with GraphScope is experimental, and is not recommended for production use yet! In addition, this release improves the experience of local deployment on MacOS, Ubuntu and CentOS, and adds more graph analytics algorithms.&lt;/p&gt;
-
-&lt;p&gt;We highlight the following improvements included in this release:&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;[Experimental] Integrate GAIA, a graph interactive query engine, into GraphScope. Currently, it has supported the following features/functions:
-    &lt;ul&gt;
-      &lt;li&gt;Dynamic memory management for arbitrary graph traversal with ensuring bounded use of memory;&lt;/li&gt;
-      &lt;li&gt;Automatic and adaptive strategy for optimizing Gremlin traversal, such as hybrid DFS/BFS traversal to balance parallelism and memory usage;&lt;/li&gt;
-      &lt;li&gt;Early-stop optimization for Gremlin (limit, nested conditional, etc.) to minimize wasted computation;&lt;/li&gt;
-      &lt;li&gt;Improvement of performance and scalability (a new LDBC Social Network Benchmark will be released around year end);&lt;/li&gt;
-      &lt;li&gt;Support both Vineyard and the new persistent graph store.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Lazy evaluation support for graph interactive engine and graph learning engine.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;A &lt;a href=&quot;https://github.com/alibaba/GraphScope/blob/main/scripts/deploy_local.sh&quot;&gt;script&lt;/a&gt; supporting local deployment on MacOS, Ubuntu and CentOS.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Add more graph analytics algorithms as built-in applications.
-    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;https://networkx.org/documentation/stable/reference/algorithms/generated/networkx.algorithms.boundary.node_boundary.html#networkx.algorithms.boundary.node_boundary&quot;&gt;node_boundary&lt;/a&gt; and &lt;a href=&quot;https://networkx.org/documentation/stable/reference/algorithms/generated/networkx.algorithms.boundary.edge_boundary.html#networkx.algorithms.boundary.edge_boundary&quot;&gt;edge_boundary&lt;/a&gt; applications;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;https://networkx.org/documentation/stable/reference/algorithms/generated/networkx.algorithms.link_analysis.pagerank_alg.pagerank.html#networkx.algorithms.link_analysis.pagerank_alg.pagerank&quot;&gt;pagerank&lt;/a&gt; in NetworkX version;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;https://networkx.org/documentation/stable/reference/algorithms/generated/networkx.algorithms.simple_paths.is_simple_path.html#networkx.algorithms.simple_paths.is_simple_path&quot;&gt;is_simple_path&lt;/a&gt; application.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;For more detailed improvements that have been made in this release, please refer to the complete &lt;a href=&quot;https://github.com/alibaba/GraphScope/releases/tag/v0.6.0&quot;&gt;changelog&lt;/a&gt;.&lt;/p&gt;
-</description>
-        <pubDate>Sun, 08 Aug 2021 03:33:20 +0000</pubDate>
-        <link>https://graphscope.io/blog/releasenotes/2021/08/08/release-notes-0.6.0.html</link>
-        <guid isPermaLink="true">https://graphscope.io/blog/releasenotes/2021/08/08/release-notes-0.6.0.html</guid>
         
         
         <category>ReleaseNotes</category>
