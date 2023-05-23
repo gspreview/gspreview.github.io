@@ -5,8 +5,8 @@
     <description>graphscope blog</description>
     <link>https://graphscope.io/blog/</link>
     <atom:link href="https://graphscope.io/blog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 23 May 2023 03:02:06 +0000</pubDate>
-    <lastBuildDate>Tue, 23 May 2023 03:02:06 +0000</lastBuildDate>
+    <pubDate>Tue, 23 May 2023 03:04:22 +0000</pubDate>
+    <lastBuildDate>Tue, 23 May 2023 03:04:22 +0000</lastBuildDate>
     <generator>Jekyll v4.3.2</generator>
     
       <item>
@@ -65,7 +65,7 @@ Taking financial transactions as an example, the flow of funds between accounts 
 &lt;p&gt;There is significant commercial value in using social networks to recommend products that users are most interested in. Currently, collaborative filtering algorithms are the most widely used algorithm in recommendation systems, and graph computing can also enhance collaborative filtering algorithms.
 For example, if two users are friends and live in the same location, and one user visits a restaurant and likes it, the recommendation algorithm will assume that the other user is also likely to be interested in this restaurant and push the information of the restaurant to her. By constructing a graph structure as shown in the figure below, we can naturally solve these problems on the graph.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/blog/assets/images/rec-algo.jpg&quot; alt=&quot;rec-algo.jpg&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/blog/assets/images/rec-alog.jpg&quot; alt=&quot;rec-algo.jpg&quot; /&gt;&lt;/p&gt;
 &lt;center&gt;* Figure 8: Recommendation algorithms based on graphs&lt;/center&gt;
 
 &lt;h4 id=&quot;structure-prediction-algorithms&quot;&gt;Structure Prediction Algorithms&lt;/h4&gt;
