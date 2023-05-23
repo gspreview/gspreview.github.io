@@ -5,9 +5,108 @@
     <description>graphscope blog</description>
     <link>https://graphscope.io/blog/</link>
     <atom:link href="https://graphscope.io/blog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 28 Oct 2022 02:54:04 +0000</pubDate>
-    <lastBuildDate>Fri, 28 Oct 2022 02:54:04 +0000</lastBuildDate>
-    <generator>Jekyll v4.3.1</generator>
+    <pubDate>Tue, 23 May 2023 02:45:55 +0000</pubDate>
+    <lastBuildDate>Tue, 23 May 2023 02:45:55 +0000</lastBuildDate>
+    <generator>Jekyll v4.3.2</generator>
+    
+      <item>
+        <title>Graphs and Graph Applications</title>
+        <description>&lt;p&gt;&lt;img src=&quot;/blog/assets/images/graph-concept.png&quot; alt=&quot;knife&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;what-is-graph&quot;&gt;What is Graph&lt;/h3&gt;
+
+&lt;p&gt;All things in the universe, from stars and planets as large as they are, to atoms and molecules as small as they are, exist in connections with each other. Graph is the most natural and suitable data structure for describing the relationships between these individual entities. A graph consists of a series of vertices (i.e., individuals) and edges (i.e., relationships between individuals), and both vertices and edges can be accompanied by some description of their own features.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/blog/assets/images/what-is-graph.jpg&quot; alt=&quot;what-is-graph.jpg&quot; /&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Figure 1: Graph definition&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The graph data commonly seen in our daily life includes social networks, transportation networks, and biological structure. For example, in social networks, each user can be regarded as a vertex in the graph, and the interactive relationship between users can be regarded as an edge. For instance, WeChat’s social network can be seen as a graph composed of vertices (individuals, official accounts) and edges (follow, like). For a city’s transportation network, we can regard each subway station as a vertex and the lines connecting various subway stations as edges. In the biological structure, each protein can be regarded as a vertex, and the interaction between proteins can be regarded as edges.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/blog/assets/images/social-networks.png&quot; alt=&quot;social-networks.png&quot; /&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Figure 2: Social networks (https://medium.com/analytics-vidhya/social-network-analytics-f082f4e21b16)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/blog/assets/images/transportation-networks.jpeg&quot; alt=&quot;transportation-networks.jpeg&quot; /&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Figure 3: Transportation networks（https://studentwork.prattsi.org）&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/blog/assets/images/biological-structure.png&quot; alt=&quot;biological-structure.png&quot; /&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Figure 4: Biological structure (https://www.biorxiv.org/content/10.1101/2020.08.11.246041v1.full）&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;algorithms-and-applications-of-graph-computation&quot;&gt;Algorithms and Applications of Graph Computation&lt;/h3&gt;
+
+&lt;p&gt;Broadly speaking, all analytical calculations based on graph data belong to graph computation, making its application areas very extensive. Considering that graph data can describe the relationships between individual entities, graph computation is particularly suitable for analyzing and computing big data related to correlation relationships. The core of graph computation lies in graph algorithms. In the following, we will classify and introduce some commonly used graph algorithms through a few simple examples.&lt;/p&gt;
+
+&lt;h4 id=&quot;graph-analysis-algorithms&quot;&gt;Graph analysis algorithms&lt;/h4&gt;
+&lt;p&gt;Graph analysis algorithms analyze and mine the overall characteristics of the whole graph or the local characteristics of partial graph structures by iteratively traversing vertices or edges in graph data. Let’s take path planning as an example to illustrate graph analysis algorithms. Suppose you ordered takeout from a restaurant located at address B while you are at home at address A. How does the delivery man find the optimal delivery route from B to A and deliver the takeout to you as quickly as possible? If we regard every address in the city as a vertex, the road connecting two addresses as an edge, and the length of the road as the feature of the edge, we can transform this problem into finding the shortest path from B to A. To solve this problem, we can use the classic Dijkstra algorithm.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/blog/assets/images/sssp.jpg&quot; alt=&quot;sssp.jpg&quot; /&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Figure 5: The shortest path algorithm&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In addition to the shortest path algorithm, commonly used graph analysis algorithms also include PageRank (analyzing the importance of vertices in the graph), Breadth-First Search (BFS) (traversing vertices in the graph according to certain rules), and Connected Components (calculating sets of vertices connected to each other in the graph). As shown in the above examples, graph analysis algorithms are based on graph theory and use relationships between vertices to infer the overall or local structural characteristics of complex graph data. We can use these algorithms to discover hidden information and solve practical business problems. For example, search engines can use the PageRank algorithm to rank the weight of web pages and show the most important web pages to users first.&lt;/p&gt;
+
+&lt;h4 id=&quot;community-detection-algorithms&quot;&gt;Community detection algorithms&lt;/h4&gt;
+&lt;p&gt;“Community” phenomena often exist in graph data, with each community consisting of a group of vertices. For a community, the relationships (edges) between internal vertices are far more than those between external vertices of the community. Community detection algorithms help to discover group behaviors or preferences within communities, find nested relationships, and are often applied to the visualization of graph data.&lt;/p&gt;
+
+&lt;p&gt;Let’s take the analysis of protein function as an example to introduce community detection algorithms. We can regard each protein as a vertex in the graph, and the interaction between proteins as edges, thus forming a protein interaction graph as shown in the figure below. In biology, proteins need to work closely together to complete a specific physiological function. Through community analysis algorithms, we can obtain several communities (proteins in different communities have different colors), and each community of proteins can be considered to cooperate with each other to complete a specific function.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/blog/assets/images/protein-function.png&quot; alt=&quot;protein-function.png&quot; /&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Figure 6: Community detection algorithm for protein function analysis (https://www.visual-computing.org/2016/01/18/group-structures-graphs/diss_cv01/)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;pattern-matching-algorithms&quot;&gt;Pattern matching algorithms&lt;/h4&gt;
+&lt;p&gt;Another field in which graph computing can demonstrate its capabilities is pattern matching algorithms. Graph pattern matching aims to find a series of subgraph structures that meet the given pattern, which has been widely used in various business scenarios.
+Taking financial transactions as an example, the flow of funds between accounts makes graph data a suitable data structure for representing financial transaction data. In the financial industry, one important type of anomalous transaction that needs to be detected is credit card cash-out, where the funds from a credit card flow through one or more intermediate transactions before returning to the account holder’s account. As shown in the figure below, if we represent the transaction relationship between accounts as a graph structure, this problem can be transformed into finding the “cycle” (starting from a vertex and following the edges can return to this vertex) in the graph.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/blog/assets/images/fraud-detection.jpg&quot; alt=&quot;fraud-detection.jpg&quot; /&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Figure 7: Fraud detection using pattern matching algorithms&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;According to the different structural patterns of the queries, pattern matching algorithms can be divided into the following categories: vertex queries (such as reachability queries, neighbor node queries, etc.), path queries (such as a path satisfying specific conditions), and subgraph structure queries (such as subgraph isomorphism). Pattern matching algorithms are widely used, apart from the financial transaction field, they also play an important role in anomaly event detection in social media and hacker activity detection in computer networks.&lt;/p&gt;
+
+&lt;h4 id=&quot;recommendation-algorithms&quot;&gt;Recommendation algorithms&lt;/h4&gt;
+&lt;p&gt;There is significant commercial value in using social networks to recommend products that users are most interested in. Currently, collaborative filtering algorithms are the most widely used algorithm in recommendation systems, and graph computing can also enhance collaborative filtering algorithms.
+For example, if two users are friends and live in the same location, and one user visits a restaurant and likes it, the recommendation algorithm will assume that the other user is also likely to be interested in this restaurant and push the information of the restaurant to her. By constructing a graph structure as shown in the figure below, we can naturally solve these problems on the graph.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/blog/assets/images/rec-algo.jpg&quot; alt=&quot;rec-algo.jpg&quot; /&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Figure 8: Recommendation algorithms based on graphs&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;structure-prediction-algorithms&quot;&gt;Structure prediction algorithms&lt;/h4&gt;
+&lt;p&gt;Due to the existence of noise in graph data, there are often partial errors in the vertices and edges of the graph, which requires the use of graph structure prediction algorithms to correct the graph data.
+As shown in the figure below, in a social network, users A and B have many mutual friends, but there is no edge between A and B. Graph structure prediction algorithms often assume that two people with many mutual friends are likely to be friends, so they believe that there should be an edge between A and B.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/blog/assets/images/link-prediction.jpg&quot; alt=&quot;link-prediction.jpg&quot; /&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Figure 9: Link prediction based on graphs&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Traditional graph structure prediction algorithms usually use static indicators such as the number of mutual friends, Katz centrality, and Adamic-Adar to correct the graph structure. In recent years, with the rapid development of deep learning technology, graph neural networks have become another popular class of graph structure prediction algorithms.
+Graph neural networks use neural networks to automatically mine features that are closely related to graph structure prediction, which greatly reduces the degree of human involvement and achieves better results compared to traditional methods.&lt;/p&gt;
+
+&lt;h3 id=&quot;summary&quot;&gt;Summary&lt;/h3&gt;
+
+&lt;p&gt;The core of graph computing is how to model data as a graph structure and how to transform the solution of a problem into a computational problem on the graph structure. When the problem involves relational analysis, graph computing can often naturally represent the solution process as a series of operations and computations on the graph structure. However, the problems that graph computing needs to solve are diverse, and it is difficult to use one set of computation models to solve all problems. We will introduce in detail the classification of graph computing, as well as the characteristics and key technologies of each type of graph computing in later articles.&lt;/p&gt;
+</description>
+        <pubDate>Mon, 22 May 2023 03:10:42 +0000</pubDate>
+        <link>https://graphscope.io/blog/tech/2023/05/22/Graphs-and-Graph-Applications.html</link>
+        <guid isPermaLink="true">https://graphscope.io/blog/tech/2023/05/22/Graphs-and-Graph-Applications.html</guid>
+        
+        
+        <category>Tech</category>
+        
+      </item>
     
       <item>
         <title>Release Notes: v0.17.0</title>
@@ -26,7 +125,7 @@ We are glad to announce a number of new features and improvements to GraphScope,
   &lt;/li&gt;
   &lt;li&gt;New language features and enhancement for GIE:
     &lt;ul&gt;
-      &lt;li&gt;The syntactic sugar of path expansion. Now user can write &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;out[in|both]('x..y', 'KNOWS')&lt;/code&gt; to support path expansion of at least &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;x&lt;/code&gt; (included) times and at most &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;y&lt;/code&gt; (excluded) times from a certain node. Meanwhile, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;with()&lt;/code&gt; step can be followed to configure the path expansion.&lt;/li&gt;
+      &lt;li&gt;The syntactic sugar of path expansion. Now user can write &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;out[in|both](&apos;x..y&apos;, &apos;KNOWS&apos;)&lt;/code&gt; to support path expansion of at least &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;x&lt;/code&gt; (included) times and at most &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;y&lt;/code&gt; (excluded) times from a certain node. Meanwhile, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;with()&lt;/code&gt; step can be followed to configure the path expansion.&lt;/li&gt;
       &lt;li&gt;The syntactic sugar of expression, introduced by &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;expr()&lt;/code&gt;, can be used along with the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;where()&lt;/code&gt;-step to enable filtering expression. For example, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.where(expr(&quot;@.name == \&quot;John\&quot;&quot;))&lt;/code&gt; helps filter out the current entry that has the name of “John”. We have updated the &lt;a href=&quot;https://graphscope.io/docs/interactive_engine.html&quot;&gt;README doc&lt;/a&gt; for some instructions.&lt;/li&gt;
       &lt;li&gt;Provide LDBC benchmarking for BI queries.&lt;/li&gt;
     &lt;/ul&gt;
@@ -355,62 +454,6 @@ We are glad to announce the availability of GraphScope v0.8. This release is a m
         <pubDate>Sat, 06 Nov 2021 03:33:20 +0000</pubDate>
         <link>https://graphscope.io/blog/releasenotes/2021/11/06/release-notes-0.8.0.html</link>
         <guid isPermaLink="true">https://graphscope.io/blog/releasenotes/2021/11/06/release-notes-0.8.0.html</guid>
-        
-        
-        <category>ReleaseNotes</category>
-        
-      </item>
-    
-      <item>
-        <title>Release Notes: v0.7.0</title>
-        <description>&lt;p&gt;&lt;img src=&quot;/blog/assets/images/release_note_t.png&quot; alt=&quot;release-note&quot; /&gt;
-We are glad to announce the availability of GraphScope v0.7. This release includes major updates for the persistent graph store in GraphScope, providing APIs for real-time graph updates (inserts and deletes of individual vertices and edges). It also focuses on user-friendly improvements, security issues, code quality, and a series of bug fixes.&lt;/p&gt;
-
-&lt;p&gt;We highlight the following improvements included in this release:&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Apart from bulk loading, this release introduces a set of APIs for real-time graph updates. Currently, these APIs have supported the following functions:
-    &lt;ul&gt;
-      &lt;li&gt;Insert/delete one or multiple vertices/edges;&lt;/li&gt;
-      &lt;li&gt;Update properties of a specific vertex/edge.&lt;/li&gt;
-    &lt;/ul&gt;
-
-    &lt;p&gt;More details can refer to &lt;a href=&quot;https://github.com/alibaba/GraphScope/blob/main/docs/persistent_graph_store.rst#realtime-write&quot;&gt;this&lt;/a&gt;.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;User-friendly improvement
-    &lt;ul&gt;
-      &lt;li&gt;Revise error handling in GraphScope and improve all error messages reported to users;&lt;/li&gt;
-      &lt;li&gt;Add a &lt;a href=&quot;https://github.com/alibaba/GraphScope/blob/main/docs/persistent_graph_store.rst&quot;&gt;document&lt;/a&gt; to describe persistent graph store in GraphScope;&lt;/li&gt;
-      &lt;li&gt;The logs in the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;err&lt;/code&gt; channel are always fetched to the client for debugging;&lt;/li&gt;
-      &lt;li&gt;The &lt;a href=&quot;https://github.com/alibaba/GraphScope/releases/download/v0.7.0/graphscope_store_data_load.tar.gz&quot;&gt;bulk-loading tool&lt;/a&gt; of the persistent graph store is released to help load graphs into the store;&lt;/li&gt;
-      &lt;li&gt;Revise some descriptions for APIs in documents.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Optimizations and enhancements
-    &lt;ul&gt;
-      &lt;li&gt;Using &lt;a href=&quot;https://github.com/etcd-io/zetcd&quot;&gt;zetcd&lt;/a&gt; to replace zookeeper in the graph interactive engine;&lt;/li&gt;
-      &lt;li&gt;Update third-party dependencies to address some security issues;&lt;/li&gt;
-      &lt;li&gt;More test coverages for GAIA and client;&lt;/li&gt;
-      &lt;li&gt;Integrate GIE GraphManager into Coordinator;&lt;/li&gt;
-      &lt;li&gt;During &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sess.gremlin&lt;/code&gt;, the pod will not be created dynamically for reducing the response time.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Some Breaking API Changes:
-    &lt;ul&gt;
-      &lt;li&gt;Remove GIE GraphManager role;&lt;/li&gt;
-      &lt;li&gt;Remove zookeeper and replace with zetcd;&lt;/li&gt;
-      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;k8s_gie_graph_manager_image&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;k8s_gie_graph_manager_cpu&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;k8s_gie_graph_manager_mem&lt;/code&gt; Deprecated;&lt;/li&gt;
-      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;k8s_zookeeper_image&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;k8s_zookeeper_cpu&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;k8s_zookeeper_mem&lt;/code&gt; Deprecated;&lt;/li&gt;
-      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;k8s_gie_gremlin_server_cpu&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;k8s_gie_gremlin_server_mem&lt;/code&gt; Deprecated.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;For more detailed improvements that have been made in this release, please refer to the complete &lt;a href=&quot;https://github.com/alibaba/GraphScope/releases/tag/v0.7.0&quot;&gt;changelog&lt;/a&gt;.&lt;/p&gt;
-</description>
-        <pubDate>Wed, 08 Sep 2021 03:33:20 +0000</pubDate>
-        <link>https://graphscope.io/blog/releasenotes/2021/09/08/release-notes-0.7.0.html</link>
-        <guid isPermaLink="true">https://graphscope.io/blog/releasenotes/2021/09/08/release-notes-0.7.0.html</guid>
         
         
         <category>ReleaseNotes</category>
