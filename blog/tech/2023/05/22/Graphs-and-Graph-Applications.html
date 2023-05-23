@@ -67,17 +67,21 @@ In this post, we will introduce basic concepts of graphs, and some typical appli
 
 <p><img src="/blog/assets/images/what-is-graph.jpg" alt="what-is-graph.jpg" /></p>
 <center> Figure 1: Graph definition</center>
+<p><br /></p>
 
 <p>The graph data commonly seen in our daily life includes social networks, transportation networks, and biological structure. For example, in social networks, each user can be regarded as a vertex in the graph, and the interactive relationship between users can be regarded as an edge. For instance, WeChat’s social network can be seen as a graph composed of vertices (individuals, official accounts) and edges (follow, like). For a city’s transportation network, we can regard each subway station as a vertex and the lines connecting various subway stations as edges. In the biological structure, each protein can be regarded as a vertex, and the interaction between proteins can be regarded as edges.</p>
 
 <p><img src="/blog/assets/images/social-networks.png" alt="social-networks.png" /></p>
 <center> Figure 2: Social networks (https://medium.com/analytics-vidhya/social-network-analytics-f082f4e21b16)</center>
+<p><br /></p>
 
 <p><img src="/blog/assets/images/transportation-networks.jpeg" alt="transportation-networks.jpeg" /></p>
 <center> Figure 3: Transportation networks（https://studentwork.prattsi.org</center>
+<p><br /></p>
 
 <p><img src="/blog/assets/images/biological-structure.png" alt="biological-structure.png" /></p>
 <center> Figure 4: Biological structure (https://www.biorxiv.org/content/10.1101/2020.08.11.246041v1.full</center>
+<p><br /></p>
 
 <h3 id="algorithms-and-applications-of-graph-computation">Algorithms and Applications of Graph Computation</h3>
 
@@ -88,6 +92,7 @@ In this post, we will introduce basic concepts of graphs, and some typical appli
 
 <p><img src="/blog/assets/images/sssp.jpg" alt="sssp.jpg" /></p>
 <center> Figure 5: The shortest path algorithm</center>
+<p><br /></p>
 
 <p>In addition to the shortest path algorithm, commonly used graph analysis algorithms also include PageRank (analyzing the importance of vertices in the graph), Breadth-First Search (BFS) (traversing vertices in the graph according to certain rules), and Connected Components (calculating sets of vertices connected to each other in the graph). As shown in the above examples, graph analysis algorithms are based on graph theory and use relationships between vertices to infer the overall or local structural characteristics of complex graph data. We can use these algorithms to discover hidden information and solve practical business problems. For example, search engines can use the PageRank algorithm to rank the weight of web pages and show the most important web pages to users first.</p>
 
@@ -98,6 +103,7 @@ In this post, we will introduce basic concepts of graphs, and some typical appli
 
 <p><img src="/blog/assets/images/protein-function.png" alt="protein-function.png" /></p>
 <center> Figure 6: Community detection algorithm for protein function analysis (https://www.visual-computing.org/2016/01/18/group-structures-graphs/diss_cv01/)</center>
+<p><br /></p>
 
 <h4 id="pattern-matching-algorithms">Pattern Matching Algorithms</h4>
 <p>Another field in which graph computing can demonstrate its capabilities is pattern matching algorithms. Graph pattern matching aims to find a series of subgraph structures that meet the given pattern, which has been widely used in various business scenarios.
@@ -105,6 +111,7 @@ Taking financial transactions as an example, the flow of funds between accounts 
 
 <p><img src="/blog/assets/images/fraud-detection.jpg" alt="fraud-detection.jpg" /></p>
 <center> Figure 7: Fraud detection using pattern matching algorithms</center>
+<p><br /></p>
 
 <p>According to the different structural patterns of the queries, pattern matching algorithms can be divided into the following categories: vertex queries (such as reachability queries, neighbor node queries, etc.), path queries (such as a path satisfying specific conditions), and subgraph structure queries (such as subgraph isomorphism). Pattern matching algorithms are widely used, apart from the financial transaction field, they also play an important role in anomaly event detection in social media and hacker activity detection in computer networks.</p>
 
@@ -114,6 +121,7 @@ For example, if two users are friends and live in the same location, and one use
 
 <p><img src="/blog/assets/images/rec-alog.jpg" alt="rec-algo.jpg" /></p>
 <center> Figure 8: Recommendation algorithms based on graphs</center>
+<p><br /></p>
 
 <h4 id="structure-prediction-algorithms">Structure Prediction Algorithms</h4>
 <p>Due to the existence of noise in graph data, there are often partial errors in the vertices and edges of the graph, which requires the use of graph structure prediction algorithms to correct the graph data.
@@ -121,6 +129,7 @@ As shown in the figure below, in a social network, users A and B have many mutua
 
 <p><img src="/blog/assets/images/link-prediction.jpg" alt="link-prediction.jpg" /></p>
 <center> Figure 9: Link prediction based on graphs</center>
+<p><br /></p>
 
 <p>Traditional graph structure prediction algorithms usually use static indicators such as the number of mutual friends, Katz centrality, and Adamic-Adar to correct the graph structure. In recent years, with the rapid development of deep learning technology, graph neural networks have become another popular class of graph structure prediction algorithms.
 Graph neural networks use neural networks to automatically mine features that are closely related to graph structure prediction, which greatly reduces the degree of human involvement and achieves better results compared to traditional methods.</p>
