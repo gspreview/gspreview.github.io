@@ -83,10 +83,14 @@ In this post, we will introduce the categories, languages, and systems of graph 
 
 <p>For instance, if we consider a graph with nodes representing people and locations, the query statements for finding people who live with Mike in both Gremlin and Cypher are shown below.</p>
 
+<p>Gremlin:</p>
+
 <div class="language-groovy highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">g</span><span class="o">.</span><span class="na">V</span><span class="o">().</span><span class="na">has</span><span class="o">(</span><span class="s1">'name'</span><span class="o">,</span> <span class="s1">'mike'</span><span class="o">).</span><span class="na">as</span><span class="o">(</span><span class="s1">'a'</span><span class="o">)</span>
 <span class="o">.</span><span class="na">out</span><span class="o">(</span><span class="s1">'lives'</span><span class="o">).</span><span class="na">in</span><span class="o">(</span><span class="s1">'lives'</span><span class="o">).</span><span class="na">where</span><span class="o">(</span><span class="n">neq</span><span class="o">(</span><span class="s1">'a'</span><span class="o">))</span>
 <span class="o">.</span><span class="na">values</span><span class="o">(</span><span class="s1">'name'</span><span class="o">)</span>
 </code></pre></div></div>
+
+<p>Cypher:</p>
 
 <div class="language-cypher highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">MATCH</span><span class="w">
 </span><span class="ss">(</span><span class="py">src:</span><span class="n">person</span><span class="ss">{</span><span class="py">name:</span><span class="s2">"mike"</span><span class="ss">})</span><span class="o">-</span><span class="ss">[</span><span class="nc">:lives</span><span class="ss">]</span><span class="o">-&gt;</span><span class="ss">()</span><span class="o">&lt;-</span><span class="ss">[</span><span class="nc">:lives</span><span class="ss">]</span><span class="o">-</span><span class="ss">(</span><span class="py">dst:</span><span class="n">person</span><span class="ss">)</span>
